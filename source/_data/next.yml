@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://zproo.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -128,7 +128,7 @@ seo: false
 menu:
   home: /
   #categories: /categories
-  #about: /about
+  about: /about
   archives: /archives
   tags: /tags
   #sitemap: /sitemap.xml
@@ -377,7 +377,7 @@ mathjax:
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: 13de64d22668070bbca26861a220a5e6
 
 # Duoshuo ShortName
 #duoshuo_shortname:
