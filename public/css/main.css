@@ -185,9 +185,9 @@ th {
 }
 body {
   position: relative;
-  font-family: 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 16px;
-  line-height: 2;
+  font-family: 'Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
   color: rgba(0,0,0,0.9);
   background: #fff;
 }
@@ -203,7 +203,7 @@ body {
 }
 @media (min-width: 1600px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 h1,
@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Microsoft YaHei', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h2,
 h3,
@@ -957,6 +957,7 @@ pre .javascript .function {
   bottom: 19px;
 }
 .header {
+  background: #fff;
   background-image: url("http://7xkj6q.com1.z0.glb.clouddn.com/header_background.jpg");
 }
 .header-inner {
@@ -998,7 +999,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Lato', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Lato', 'Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1086,7 +1087,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Microsoft YaHei', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1104,7 +1105,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1351,7 +1352,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Microsoft YaHei', 'Microsoft YaHei', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1691,7 +1692,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #30ff41;
+  background: #16ff6a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2472,7 +2473,8 @@ h6 {
   margin: 20px 0 10px;
 }
 p {
-  margin: 0 0 25px 0;
+  margin: 15px 0 15px 0;
+  text-indent: 2em;
 }
 a {
   border-bottom-color: #ccc;
@@ -2650,7 +2652,7 @@ hr {
   margin-top: 0;
 }
 .posts-expand .post-meta {
-  margin-top: 5px;
+  margin-top: -13px;
   margin-bottom: 20px;
 }
 .posts-expand .post-title {
@@ -2695,7 +2697,7 @@ hr {
 .post-button a {
   margin: 0 8px 8px 0 !important;
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #666;
   background: none;
   border: none;
@@ -2704,12 +2706,12 @@ hr {
 }
 @media (max-width: 767px) {
   .post-button a {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 @media (min-width: 1600px) {
   .post-button a {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 .post-button a:hover {
@@ -2784,5 +2786,8 @@ hr {
   text-align: center;
 }
 .post-button {
-  text-align: center;
+  margin-top: 0px;
+}
+.posts-expand .post {
+  margin-top: 50px;
 }
