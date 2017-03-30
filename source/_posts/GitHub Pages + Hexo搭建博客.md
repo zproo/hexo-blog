@@ -5,15 +5,12 @@ tags: [技术, 静态独立博客, Hexo, GitHub Page, Git]
 date: 2015-12-20
 ---
 
-# 一、 前言
 
 这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。
 
 作为一个前端小白，虽说是个码农，但是一开始照着网上的各种教程去搭建的时候，还是云里雾里的。记得几个月前刚接触GitHub（哈哈，对大四来说确实有点晚），对版本控制一点概念都没有，更别说使用GitHub Page能做出一个好看又好用的博客了。所以第一次的尝试失败了。
 
 后来的两三个月里，开始逐渐地把日常的学习都迁移到GitHub上进行，慢慢熟悉了Git的版本控制。之后，因为嫌弃csdn和博客园的样子（颜值控），最终又回归到搭建独立博客的光明大道上。
-
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"></iframe>
 
 我所总结的是单纯地利用GitHub Pages搭建自己独立博客的过程，并没有额外使用独立域名之类的（谁让我现在还没工资 o(^▽^)o ）。
 
@@ -33,6 +30,8 @@ date: 2015-12-20
 ### 2.1.1 创建对应仓库
 
 在自己的GitHub账号下创建一个新的仓库，命名为username.github.io（username是你的账号名)。
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=25706282&auto=0&height=66"></iframe>
 
 在这里，要知道，GitHub Pages有两种类型：User/Organization Pages 和 Project Pages，而我所使用的是User Pages。
 
@@ -55,16 +54,69 @@ date: 2015-12-20
 
 当安装完Git应该做的第一件事情就是设置用户名称和邮件地址。这样做很重要，因为每一个Git的提交都会使用这些信息，并且它会写入你的每一次提交中，不可更改：
 
-```bash
-
+```html
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html,charset=utf-8">
+  <title></title>
+  <style type="text/css">
+      #drag-area {
+          width: 500px;
+          height: 500px;
+          border: 1px solid red;
+          position: relative;
+      }
+      #my-img {
+          position: absolute;
+      }
+  </style>
+</head>
+<body>
+<div id="drag-area">
+  <img src="img/img1.jpg" alt="" id="my-img">
+</div>
+</body>
+<script type="text/javascript">
+  var my_img = document.getElementById("my-img");
+  var drag_area = document.getElementById("drag-area");
+  my_img.ondragstart = function (evt) {       //在被拖动的元素的dragstart事件中取得坐标便宜
+      var evt = evt || window.event;        //即代码中evt.clientX-this.offsetLeft和evt.clientY-this.offsetTop,并保存在dataTransfer对象中
+      evt.dataTransfer.setData("text", (evt.clientX - this.offsetLeft) + ";" + (evt.clientY - this.offsetTop));
+  }
+  drag_area.ondragover = function (evt) {     //阻止dragover的默认事件
+      var evt = evt || window.event;
+      if (typeof evt.preventDefault == "function") {
+          evt.preventDefault();
+      } else {
+          evt.returnValue = false;
+      }
+  }
+    drag_area.ondragenter = function (evt) {   //阻止dragenter的默认事件
+        var evt = evt || window.event;
+        if (typeof evt.preventDefault == "function") {
+            evt.preventDefault();
+        } else {
+            evt.returnValue = false;
+        }
+    }
+    drag_area.ondrop = fu-nction (evt) {
+        var evt = evt || window.event;
+        var drag_data = evt.dataTransfer.getData("Text").split(";");//从dataTransfer对象中取出数据，并将字符串分割成数组
+        var offset_x = drag_data[0],//取得横向偏移
+            offset_y = drag_data[1];//取得纵向偏移
+        if (typeof evt.preventDefault == "function") { //阻止drop事件的默认行为
+            evt.preventDefault();
+        } else {
+            evt.returnValue = false;
+        }
+        my_img.style.left = (evt.clientX - offset_x) + "px";//给拖动元素的left，top赋值
+        my_img.style.top = (evt.clientY - offset_y) + "px";
+    }
+</script>
+</html>
 ```
 
-$ git config --global user.name "username"
-$ git config --global user.email "username@example.com"
 
-```
-
-```
 
 对于user.email，因为在GitHub的commits信息上是可见的，所以如果你不想让人知道你的email，可以Keeping your email address private:
 

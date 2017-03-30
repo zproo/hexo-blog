@@ -186,9 +186,9 @@ th {
 body {
   position: relative;
   font-family: 'Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7;
-  color: rgba(0,0,0,0.9);
+  color: #000;
   background: #fff;
 }
 @media (max-width: 767px) {
@@ -277,7 +277,7 @@ p {
   margin: 0 0 25px 0;
 }
 a {
-  color: rgba(0,0,0,0.9);
+  color: #000;
   text-decoration: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
@@ -434,11 +434,11 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: 700px;
+  width: 800px;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
-    width: 900px;
+    width: 1000px;
   }
 }
 .main {
@@ -446,11 +446,11 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 800px;
 }
 @media (min-width: 1600px) {
   .container .main-inner {
-    width: 900px;
+    width: 1000px;
   }
 }
 .footer {
@@ -463,11 +463,11 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: 700px;
+  width: 800px;
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
-    width: 900px;
+    width: 1000px;
   }
 }
 pre,
@@ -476,8 +476,8 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
-  color: #ccc;
-  background: #2d2d2d;
+  color: #4d4d4c;
+  background: #f7f7f7;
   line-height: 1.6;
 }
 pre,
@@ -487,14 +487,14 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: rgba(0,0,0,0.9);
+  color: #000;
   background: #eee;
   border-radius: 3px;
   font-size: 13px;
 }
 pre code {
   padding: 0;
-  color: #ccc;
+  color: #4d4d4c;
   background: none;
   text-shadow: none;
 }
@@ -517,7 +517,7 @@ pre code {
 }
 .highlight figcaption {
   font-size: 1em;
-  color: #ccc;
+  color: #4d4d4c;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -531,22 +531,22 @@ pre code {
 }
 .highlight figcaption a {
   float: right;
-  color: #ccc;
+  color: #4d4d4c;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #ccc;
+  border-bottom-color: #4d4d4c;
 }
 .highlight .gutter pre {
   padding-left: 10px;
   padding-right: 10px;
-  color: #999;
+  color: #869194;
   text-align: right;
-  background-color: #1b1b1b;
+  background-color: #eff2f3;
 }
 .highlight .code pre {
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #2d2d2d;
+  background-color: #f7f7f7;
 }
 .highlight .line {
   height: 20px;
@@ -564,16 +564,16 @@ pre code {
   border: none;
 }
 pre .deletion {
-  background: #008000;
+  background: #fdd;
 }
 pre .addition {
-  background: #800000;
+  background: #dfd;
 }
 pre .meta {
-  color: #c9c;
+  color: #8959a8;
 }
 pre .comment {
-  color: #999;
+  color: #8e908c;
 }
 pre .variable,
 pre .attribute,
@@ -587,7 +587,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #f2777a;
+  color: #c82829;
 }
 pre .number,
 pre .preprocessor,
@@ -596,7 +596,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #f99157;
+  color: #f5871f;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -609,11 +609,11 @@ pre .xml .cdata,
 pre .special,
 pre .number,
 pre .formula {
-  color: #9c9;
+  color: #718c00;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #6cc;
+  color: #3e999f;
 }
 pre .function,
 pre .python .decorator,
@@ -623,11 +623,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #69c;
+  color: #4271ae;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #c9c;
+  color: #8959a8;
 }
 .full-image.full-image.full-image {
   border: none;
@@ -834,7 +834,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: rgba(0,0,0,0.9);
+  background: #000;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -1105,7 +1105,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1315,7 +1315,7 @@ pre .javascript .function {
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: rgba(0,0,0,0.9);
+  color: #000;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1423,7 +1423,7 @@ pre .javascript .function {
   margin-top: 50px;
 }
 .post-button .btn {
-  color: rgba(0,0,0,0.9);
+  color: #000;
   font-size: 14px;
   background: transparent;
   border-radius: 0;
@@ -1464,7 +1464,7 @@ pre .javascript .function {
   display: block;
   line-height: 25px;
   font-size: 14px;
-  color: rgba(0,0,0,0.9);
+  color: #000;
   border-bottom: none;
 }
 .post-nav-item a:hover {
@@ -1548,7 +1548,7 @@ pre .javascript .function {
 }
 .sidebar a {
   color: #999;
-  border-bottom-color: rgba(0,0,0,0.9);
+  border-bottom-color: #000;
 }
 .sidebar a:hover {
   color: #eee;
@@ -1681,7 +1681,7 @@ pre .javascript .function {
   vertical-align: middle;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-bottom-color: rgba(0,0,0,0.9);
+  border-bottom-color: #000;
   font-size: 13px;
 }
 .links-of-author a:before {
@@ -1692,7 +1692,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #16ff6a;
+  background: #3324f4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1719,7 +1719,7 @@ pre .javascript .function {
   cursor: pointer;
   border-bottom: 1px solid transparent;
   font-size: 14px;
-  color: rgba(0,0,0,0.9);
+  color: #000;
 }
 .sidebar-nav li:hover {
   color: #f5f5f5;
@@ -1769,7 +1769,7 @@ pre .javascript .function {
   transition-delay: 0s;
   transition-property: all;
   color: #999;
-  border-bottom-color: rgba(0,0,0,0.9);
+  border-bottom-color: #000;
 }
 .post-toc ol a:hover {
   color: #ccc;
@@ -2259,7 +2259,7 @@ pre .javascript .function {
   width: 10px;
   height: 10px;
   opacity: 0.5;
-  background: rgba(0,0,0,0.9);
+  background: #000;
   border: 1px solid #fff;
   border-radius: 50%;
 }
@@ -2474,7 +2474,6 @@ h6 {
 }
 p {
   margin: 15px 0 15px 0;
-  text-indent: 2em;
 }
 a {
   border-bottom-color: #ccc;
@@ -2697,7 +2696,7 @@ hr {
 .post-button a {
   margin: 0 8px 8px 0 !important;
   padding: 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
   background: none;
   border: none;
@@ -2706,7 +2705,7 @@ hr {
 }
 @media (max-width: 767px) {
   .post-button a {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 @media (min-width: 1600px) {
@@ -2787,7 +2786,14 @@ hr {
 }
 .post-button {
   margin-top: 0px;
+  border-bottom: 1px solid #ccc;
 }
 .posts-expand .post {
   margin-top: 50px;
+}
+h1 {
+  border-bottom: 1px solid #ccc;
+}
+.post-title {
+  border-bottom: 0px;
 }
