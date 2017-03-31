@@ -174,7 +174,7 @@ scheme: Mist
 # - Introduce in 5.0.1
 # ---------------------------------------------------------------
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default)
   host:
@@ -183,7 +183,7 @@ font:
   global:
     # external: true will load this font family from host.
     external: true
-    family: Lato
+    family: 'Monda'
 #    family: Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6)
@@ -381,11 +381,11 @@ mathjax:
 baidu_analytics:
 
 # Duoshuo ShortName
-#duoshuo_shortname:
+duoshuo_shortname: zproo
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: https-zproo-github-io
   count: true
 
