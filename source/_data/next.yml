@@ -174,7 +174,7 @@ scheme: Mist
 # - Introduce in 5.0.1
 # ---------------------------------------------------------------
 font:
-  enable: true
+  enable: false
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default)
   host:
@@ -183,8 +183,8 @@ font:
   global:
     # external: true will load this font family from host.
     external: true
-#    family: Lato
-    family: Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif
+    family: Lato
+#    family: Avenir, "Segoe UI", "Hiragino Sans GB", STHeiti, "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6)
   # Fallback to `global` font settings.
@@ -253,7 +253,7 @@ toc:
   enable: true
 
   # Automatically add list number to toc.
-  number: true
+  number: false
 
 
 # Creative Commons 4.0 International License.
@@ -302,16 +302,16 @@ sidebar:
 # ---------------------------------------------------------------
 
 # Automatically scroll page to section which is under <!-- more --> mark.
-scroll_to_more: true
+scroll_to_more: false
 
 # Automatically excerpt description in homepage as preamble text.
-excerpt_description: true
+excerpt_description: false
 
 # Automatically Excerpt. Not recommend.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
-  length: 150
+  enable: true
+  length: 170
 
 # Post meta display settings
 post_meta:
@@ -377,7 +377,8 @@ mathjax:
 #swiftype_key:
 
 # Baidu Analytics ID
-baidu_analytics: 13de64d22668070bbca26861a220a5e6
+#baidu_analytics: 13de64d22668070bbca26861a220a5e6
+baidu_analytics:
 
 # Duoshuo ShortName
 #duoshuo_shortname:
@@ -490,14 +491,14 @@ leancloud_visitors:
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
   # count values only if the other configs are false
-  enable: false
+  enable: true
   # custom uv span for the whole site
-  site_uv: true
+  site_uv: false
   site_uv_header: <i class="fa fa-user"></i>
   site_uv_footer:
   # custom pv span for the whole site
   site_pv: true
-  site_pv_header: <i class="fa fa-eye"></i>
+  site_pv_header: <i class="fa fa-eye"><span>访问量</span></i>
   site_pv_footer:
   # custom pv span for one page only
   page_pv: true

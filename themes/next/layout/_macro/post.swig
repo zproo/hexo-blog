@@ -281,7 +281,12 @@
           </div>
           <!--/noindex-->
         {% elif post.excerpt  %}
-          {{ post.excerpt }}
+          {#zproo修改#}
+          <div class="zproo-edit">
+            {{ post.excerpt }}
+          </div>
+          {#{{ post.excerpt }}#}
+
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
@@ -308,6 +313,7 @@
           {% endif %}
         {% endif %}
       {% else %}
+        {#显示全部#}
         {{ post.content }}
       {% endif  %}
     </div>
