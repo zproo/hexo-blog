@@ -381,11 +381,11 @@ mathjax:
 baidu_analytics:
 
 # Duoshuo ShortName
-duoshuo_shortname: zproo
+#duoshuo_shortname: zproo
 
 # Disqus
 disqus:
-  enable: false
+  enable: true
   shortname: https-zproo-github-io
   count: true
 
@@ -498,11 +498,11 @@ busuanzi_count:
   site_uv_footer:
   # custom pv span for the whole site
   site_pv: true
-  site_pv_header: <i class="fa fa-eye"><span>访问量</span></i>
+  site_pv_header: <i class="fa fa-eye"> 访问量</i>
   site_pv_footer:
   # custom pv span for one page only
   page_pv: true
-  page_pv_header: <i class="fa fa-file-o"></i>
+  page_pv_header: <i class="fa fa-eye"> 阅读量</i>
   page_pv_footer:
 
 

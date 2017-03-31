@@ -1691,7 +1691,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0412cd;
+  background: #dfcb33;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2797,4 +2797,7 @@ h1 {
 }
 p {
   margin: 10px 0 10px 0;
+}
+.site-author-image {
+  border-radius: 50%;
 }
