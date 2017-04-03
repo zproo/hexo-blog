@@ -564,6 +564,7 @@ use_motion: true
 # Fancybox
 fancybox: true
 
+# Only fit scheme Pisces
 # Canvas-ribbon
 canvas_ribbon: true
 

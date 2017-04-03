@@ -20,7 +20,7 @@
   {% set js_vendors.canvas_nest  = 'canvas-nest/canvas-nest.min.js' %}
 {% endif %}
 
-{% if theme.canvas_ribbon %}
+{% if theme.canvas_ribbon and theme.scheme === 'Pisces'%}
   {% set js_vendors.canvas_ribbon  = 'canvas-ribbon/canvas-ribbon.js' %}
 {% endif %}
 
