@@ -20,6 +20,10 @@
   {% set js_vendors.canvas_nest  = 'canvas-nest/canvas-nest.min.js' %}
 {% endif %}
 
+{% if theme.canvas_ribbon %}
+  {% set js_vendors.canvas_ribbon  = 'canvas-ribbon/canvas-ribbon.js' %}
+{% endif %}
+
 {% if theme.three_waves %}
   {% set js_vendors.three  = 'three/three.min.js' %}
   {% set js_vendors.three_waves  = 'three/three-waves.min.js' %}

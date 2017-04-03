@@ -161,8 +161,8 @@ menu_icons:
 
 # Schemes
 #scheme: Muse
-scheme: Mist
-#scheme: Pisces
+#scheme: Mist
+scheme: Pisces
 
 
 # ---------------------------------------------------------------
@@ -377,8 +377,7 @@ mathjax:
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics: 13de64d22668070bbca26861a220a5e6
-baidu_analytics:
+#baidu_analytics:
 
 # Duoshuo ShortName
 #duoshuo_shortname: zproo
@@ -565,8 +564,14 @@ use_motion: true
 # Fancybox
 fancybox: true
 
+# Canvas-ribbon
+canvas_ribbon: true
+
 # Canvas-nest
 canvas_nest: false
+
+#three_waves
+three_waves: false
 
 # Script Vendors.
 # Set a CDN address for the vendor you want to customize.
@@ -618,6 +623,10 @@ vendors:
   # Internal version: 1.0.0
   # https://github.com/hustcc/canvas-nest.js
   canvas_nest:
+
+  #three
+  three:
+  three_waves:
 
 
 
