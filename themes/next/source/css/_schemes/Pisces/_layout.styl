@@ -1,7 +1,26 @@
+// zproo添加
+// 自定义Pisces摘要显示
+.zproo-edit  * {
+//display : inline-block;
+  font-size : 16px;
+  margin : 0px;
+  padding-top: 0px;
+}
+
+/*
+******************************************************************************************************
+*/
 .header {
   position: relative;
   margin: 0 auto;
+
+  // zproo修改
   width: $main-desktop;
+  //width: $main-desktop;
+
+  +desktop-large() {
+    .container & { width: $main-desktop-large; }
+  }
 
   +tablet() {
     width: auto;
@@ -47,7 +66,11 @@
 }
 
 .container .main-inner {
+  // zproo 添加
   width: $main-desktop;
+  +desktop-large() {
+    .container & { width: $content-desktop-large; }
+  }
 
   +tablet() {
     width: auto;
@@ -61,7 +84,13 @@
   float: right;
   box-sizing: border-box;
   padding: $content-desktop-padding;
+
+  // zproo修改
   width: $content-desktop;
+  +desktop-large() {
+    .container & { width: $content-desktop-large; }
+  }
+
   background: white;
   min-height: 700px;
   box-shadow: $box-shadow-inner;
