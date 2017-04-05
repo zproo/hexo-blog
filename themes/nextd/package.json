@@ -1,0 +1,32 @@
+{
+  "name": "hexo-theme-nextd",
+  "version": "5.0.0",
+  "description": "Elegant theme for Hexo",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BearD01001/hexo-theme-nextd.git"
+  },
+  "keywords": [
+    "NexTD",
+    "Hexo"
+  ],
+  "author": "熊D01001（BearD01001） <dino@tail.cc>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BearD01001/hexo-theme-nextd/issues"
+  },
+  "homepage": "https://github.com/BearD01001/hexo-theme-nextd#readme",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.12.0",
+    "jshint-stylish": "^2.1.0"
+  }
+}

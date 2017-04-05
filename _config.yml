@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: nextd
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -78,4 +78,9 @@ deploy:
 #  apiKey: '6002f777cdd5300a552eb57dabd9fa4b'
 #  adminApiKey: '299b733086bb80b1a1f5aae7eca1a11c'
 #  indexName: 'zproo'
+<<<<<<< HEAD
 #  chunkSize: 5000
+=======
+#  chunkSize: 5000
+
+>>>>>>> newtheme
