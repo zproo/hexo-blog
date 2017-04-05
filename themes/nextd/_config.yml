@@ -327,9 +327,9 @@ facebook_comments_plugin:
 # Show number of visitors to each article.
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
-  enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  enable: true
+  app_id: GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz
+  app_key: Gq4sJwz8T6cywiaHlBGFDbE4
 
 # Show PV/UV of the website/page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
@@ -370,6 +370,10 @@ fancybox: true
 
 # Canvas-nest
 canvas_nest: false
+
+# Only fit scheme Pisces
+# Canvas-ribbon
+canvas_ribbon: true
 
 # Script Vendors.
 # Set a CDN address for the vendor you want to customize.

@@ -20,6 +20,10 @@
   {% set js_vendors.canvas_nest  = 'canvas-nest/canvas-nest.min.js' %}
 {% endif %}
 
+{% if theme.canvas_ribbon and theme.scheme === 'Pisces'%}
+  {% set js_vendors.canvas_ribbon  = 'canvas-ribbon/canvas-ribbon.js' %}
+{% endif %}
+
 {% for name, internal in js_vendors %}
   {% set internal_script = url_for(theme.vendors._internal) + '/' + internal %}
   <script type="text/javascript" src="{{ theme.vendors[name] | default(internal_script) }}"></script>

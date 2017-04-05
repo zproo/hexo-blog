@@ -48,6 +48,11 @@
 .container .main-inner {
   width: $main-desktop;
 
+  // zproo
+  +desktop-large() {
+     width: $main-desktop-large;
+  }
+
   +tablet() {
     width: auto;
   }
@@ -63,6 +68,11 @@
   width: $content-desktop;
   background: white;
   min-height: 700px;
+
+// zproo
+  +desktop-large() {
+    width: $content-desktop-large;
+  }
 
   +tablet() {
     width: 100%;
