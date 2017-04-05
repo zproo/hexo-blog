@@ -7,3 +7,23 @@
 .main {
   margin-top: 20px;
 }
+
+// 顶部导航栏
+.menu {
+  overflow: hidden;
+}
+
+.menu .menu-item a {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 20px;
+
+  float: right;
+// 适配手机
+  +mobile() {
+    font-size: 12px;
+    line-height: inherit;
+    padding: 0px 5px;
+
+  }
+}

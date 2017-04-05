@@ -8,10 +8,10 @@ favicon: /favicon.ico
 # Page covers for follow pages, whom height is greater than 400px.
 # Home cover is required, which is default cover for other pages.
 cover:
-  home: /images/home_bg.jpg
-  tag: /images/tag_bg.jpg
-  archive: /images/archive_bg.jpg
-  category: /images/category_bg.jpg
+  home: /images/home_bg1.jpg
+  tag: /images/home_bg1.jpg
+  archive: /images/home_bg1.jpg
+  category: /images/home_bg1.jpg
   # post:
   # about:
   # pages:
@@ -44,9 +44,10 @@ canonical: true
 menu:
   # home: /
   #categories: /categories
-  archives: /archives
-  tags: /tags
   about: /about
+  tags: /tags
+  archives: /archives
+
   #commonweal: /404.html
 
 

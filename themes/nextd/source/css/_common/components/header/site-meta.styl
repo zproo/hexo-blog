@@ -3,6 +3,7 @@
   text-align: $site-meta-text-align;
 
   +mobile() {
+
     text-align: center;
 
   }
@@ -15,7 +16,9 @@
   color: $brand-color;
   background: $brand-bg;
   border-bottom: none;
-  &:hover { color: $brand-hover-color; }
+  &:hover {
+    color: $brand-hover-color;
+  }
 }
 
 .logo {
@@ -26,6 +29,7 @@
 }
 
 .site-title {
+
   display: inline-block;
   vertical-align: top;
   font-size: 80px;
@@ -53,6 +57,9 @@
     }
   }
   +mobile() {
+  // zproo-site-title
+    display: none;
+
     font-size: 60px;
 
     &:before, &:after {
@@ -74,7 +81,9 @@
 }
 
 .use-motion {
-  .brand { opacity: 0; }
+  .brand {
+    opacity: 0;
+  }
 
   .logo, .site-title, .site-subtitle {
     opacity: 0;

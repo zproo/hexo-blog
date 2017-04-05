@@ -21,6 +21,9 @@
 }
 
 .site-nav {
+// zproo-site-nav
+  z-index: 1;
+
   position: absolute;
   top: 0;
   right: 20px;
@@ -30,8 +33,14 @@
     top: 40px;
   }
   +tablet() {
+    width: 100%;
+
     top: 5px;
     display: block !important;
   }
-  +desktop() { display: block !important; }
+  +desktop() {
+    width: 100%;
+
+    display: block !important;
+  }
 }
