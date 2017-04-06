@@ -8,6 +8,7 @@
   {% if is_home() %} page-home {% endif %}
 {% endblock %}
 
+{#zproo主页背景高度#}
 {% block header %}
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('{{ url_for( theme.cover.home ) }}');">
       <div class="header-inner"> {%- include '_partials/header.swig' %} </div>

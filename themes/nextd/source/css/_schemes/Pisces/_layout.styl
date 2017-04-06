@@ -1,3 +1,11 @@
+// 不同页封面设置
+#header_post {
+  min-height: 400px;
+  +desktop-large() {
+    min-height: 600px;
+  }
+}
+
 .header {
   position: relative;
   margin: 0 auto;
@@ -8,10 +16,7 @@
   background-size: cover;
 
   // zproo-header
-  min-height: 400px;
-  +desktop-large() {
-    min-height: 600px;
-  }
+  min-height: 300px;
 
   +tablet() {
     width: auto;

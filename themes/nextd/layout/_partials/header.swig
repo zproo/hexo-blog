@@ -1,6 +1,7 @@
 <a class="site-home" href="{{ config.root }}">{{ config.title }}</a>
 
 <div class="site-meta {% if theme.custom_logo.enabled %}custom-logo{% endif %}">
+  {#zproo-logo#}
   {% if theme.custom_logo.image and theme.scheme === 'Muse' %}
     <div class="site-meta-headline">
       <a>

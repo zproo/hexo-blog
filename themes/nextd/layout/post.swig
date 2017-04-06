@@ -8,8 +8,9 @@
 
 {% block page_class %}page-post-detail{% endblock %}
 
+{#zproo文章详情页封面#}
 {% block header %}
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('{{ page.cover || url_for( theme.cover.post || theme.cover.home ) }}');">
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('{{ page.cover || url_for( theme.cover.post || theme.cover.home ) }}');">
       <div class="header-inner"> {%- include '_partials/header.swig' %} </div>
       <div class="header-post"> {{ post_header.render(page) }} </div>
     </header>

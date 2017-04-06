@@ -8,10 +8,10 @@ favicon: /favicon.ico
 # Page covers for follow pages, whom height is greater than 400px.
 # Home cover is required, which is default cover for other pages.
 cover:
-  home: /images/home_bg1.jpg
-  tag: /images/home_bg1.jpg
-  archive: /images/home_bg1.jpg
-  category: /images/home_bg1.jpg
+  home: /images/home_bg.jpg
+  tag: /images/home_bg.jpg
+  archive: /images/home_bg.jpg
+  category: /images/home_bg.jpg
   # post:
   # about:
   # pages:
@@ -211,7 +211,7 @@ sidebar:
 #   image: url-of-image   - Images's url
 custom_logo:
   enabled: false
-  image:
+  image: /images/avatar.jpg
 
 
 # Code Highlight theme
