@@ -1,4 +1,4 @@
-diff a/themes/nextd/_config.yml b/themes/nextd/_config.yml	(rejected hunks)
+diff a/themes/znext/_config.yml b/themes/znext/_config.yml	(rejected hunks)
 @@ -327,9 +327,9 @@
  # Show number of visitors to each article.
  # You can visit https://leancloud.cn get AppID and AppKey.
@@ -9,6 +9,6 @@ diff a/themes/nextd/_config.yml b/themes/nextd/_config.yml	(rejected hunks)
 +  enable: true
 +  app_id: GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz
 +  app_key: Gq4sJwz8T6cywiaHlBGFDbE4
- 
+
  # Show PV/UV of the website/page with busuanzi.
  # Get more information on http://ibruce.info/2015/04/04/busuanzi/

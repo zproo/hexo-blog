@@ -198,9 +198,9 @@ th {
 body {
   position: relative;
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 2;
-  color: rgba(0,0,0,0.9);
+  color: #444;
   background: #f5f7f9;
 }
 @media (max-width: 767px) {
@@ -235,7 +235,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 20px 0 15px;
+  margin: 0px 0 5px;
 }
 h1 {
   font-size: 22px;
@@ -289,7 +289,7 @@ p {
   margin: 0 0 25px 0;
 }
 a {
-  color: rgba(0,0,0,0.9);
+  color: #444;
   text-decoration: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
@@ -528,7 +528,7 @@ code {
 code {
   padding: 2px 4px;
   word-break: break-all;
-  color: rgba(0,0,0,0.9);
+  color: #444;
   background: #eee;
   border-radius: 4px;
   font-size: 13px;
@@ -748,7 +748,7 @@ pre .javascript .function {
   font-size: 14px;
   color: #fff;
   background: #222;
-  border: 2px solid rgba(0,0,0,0.9);
+  border: 2px solid #444;
   text-decoration: none;
   border-radius: 0;
   transition-property: background-color;
@@ -766,7 +766,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: rgba(0,0,0,0.9);
+  background: #444;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -1145,7 +1145,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1348,7 +1348,7 @@ pre .javascript .function {
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: rgba(0,0,0,0.9);
+  color: #444;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1430,7 +1430,7 @@ pre .javascript .function {
   margin-top: 50px;
 }
 .post-more-link .btn {
-  color: rgba(0,0,0,0.9);
+  color: #444;
   font-size: 14px;
   background: #fff;
   border-radius: 2px;
@@ -1467,7 +1467,7 @@ pre .javascript .function {
   display: inline-block;
   line-height: 25px;
   font-size: 14px;
-  color: rgba(0,0,0,0.9);
+  color: #444;
   border-bottom: none;
 }
 .post-nav-item a:hover {
@@ -1588,7 +1588,7 @@ pre .javascript .function {
 }
 .sidebar a {
   color: #999;
-  border-bottom-color: rgba(0,0,0,0.9);
+  border-bottom-color: #444;
 }
 .sidebar a:hover {
   color: #eee;
@@ -1721,7 +1721,7 @@ pre .javascript .function {
   vertical-align: middle;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-bottom-color: rgba(0,0,0,0.9);
+  border-bottom-color: #444;
   font-size: 13px;
 }
 .links-of-author a:before {
@@ -1732,7 +1732,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff79ff;
+  background: #7e559c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1758,7 +1758,7 @@ pre .javascript .function {
   cursor: pointer;
   border-bottom: 1px solid transparent;
   font-size: 14px;
-  color: rgba(0,0,0,0.9);
+  color: #444;
 }
 .sidebar-nav li:hover {
   color: #fc6423;
@@ -2275,7 +2275,7 @@ a.search-result {
   width: 10px;
   height: 10px;
   opacity: 0.5;
-  background: rgba(0,0,0,0.9);
+  background: #444;
   border: 1px solid #fff;
   border-radius: 50%;
 }
@@ -2626,7 +2626,7 @@ a.search-result {
 .sidebar-inner {
   box-sizing: border-box;
   width: 240px;
-  color: rgba(0,0,0,0.9);
+  color: #444;
   background: #fff;
 }
 .sidebar-inner.affix {
@@ -2646,7 +2646,7 @@ a.search-result {
   clear: both;
 }
 .sidebar a {
-  color: rgba(0,0,0,0.9);
+  color: #444;
 }
 .sidebar a:hover {
   color: #222;
@@ -2774,9 +2774,31 @@ a.search-result {
     padding: 0px 5px;
   }
 }
-.posts-expand .post-title-link {
+.posts-expand .post-title {
   font-weight: 400;
+  border-bottom: 0px;
 }
 .posts-expand .post-eof {
   margin: 40px auto 30px;
+}
+h1 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  margin-top: 15px;
+}
+.page-post-detail .post-header h1 {
+  border-bottom: 0px;
+}
+p {
+  margin: 10px 0 10px 0;
+}
+body {
+  line-height: 1.6;
+}
+pre,
+.highlight {
+  margin: 10px 0;
+}
+.posts-expand .post-meta {
+  margin-top: -10px;
 }

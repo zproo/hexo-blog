@@ -73,7 +73,7 @@ menu_icons:
 # Scheme Settings
 # ---------------------------------------------------------------
 
-# NexTD is based on NexT.Pisces
+# ZNext is based on NexT.Pisces
 scheme: Pisces
 
 
@@ -258,10 +258,10 @@ mathjax:
 #baidu_analytics:
 
 # Duoshuo ShortName
-#duoshuo_shortname:
+duoshuo_shortname: zproo
 
 # Disqus
-disqus_shortname: https-zproo-github-io
+#disqus_shortname: https-zproo-github-io
 
 # Hypercomments
 #hypercomments_id:
