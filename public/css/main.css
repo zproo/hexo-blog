@@ -940,7 +940,7 @@ pre .javascript .function {
   transform: scaleX(1);
 }
 .site-meta {
-  margin: 80px 0 0;
+  margin: 20px 0 0;
   text-align: center;
 }
 @media (max-width: 767px) {
@@ -968,10 +968,10 @@ pre .javascript .function {
 .site-title {
   display: inline-block;
   vertical-align: top;
-  font-size: 80px;
-  font-weight: 700;
+  font-size: 50px;
+  font-weight: 400;
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  line-height: 100px;
+  line-height: 50px;
 }
 .site-title:before,
 .site-title:after {
@@ -1732,7 +1732,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff8baf;
+  background: #ff79ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2313,6 +2313,14 @@ a.search-result {
 .page-post-detail .comments {
   overflow: hidden;
 }
+#header_post {
+  min-height: 400px;
+}
+@media (min-width: 1600px) {
+  #header_post {
+    min-height: 600px;
+  }
+}
 .header {
   position: relative;
   margin: 0 auto;
@@ -2321,11 +2329,11 @@ a.search-result {
   background-color: #808080;
   background-attachment: scroll;
   background-size: cover;
-  min-height: 400px;
+  min-height: 220px;
 }
 @media (min-width: 1600px) {
   .header {
-    min-height: 600px;
+    min-height: 300px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2765,4 +2773,10 @@ a.search-result {
     line-height: inherit;
     padding: 0px 5px;
   }
+}
+.posts-expand .post-title-link {
+  font-weight: 400;
+}
+.posts-expand .post-eof {
+  margin: 40px auto 30px;
 }

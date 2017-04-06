@@ -15,8 +15,11 @@
   background-attachment: scroll;
   background-size: cover;
 
-  // zproo-header
-  min-height: 300px;
+  // zproo主页背景高度
+  min-height: 220px;
+  +desktop-large() {
+    min-height: 300px;
+  }
 
   +tablet() {
     width: auto;
