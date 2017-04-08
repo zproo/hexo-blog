@@ -36,14 +36,28 @@
     <ul id="menu" class="menu">
       {% for name, path in theme.menu %}
         {% set itemName = name.toLowerCase() %}
-        <li class="menu-item menu-item-{{ itemName }}">
-          <a href="{{ url_for(path) }}" rel="section">
-            {% if theme.menu_icons.enable %}
-              <i class="menu-item-icon fa fa-fw fa-{{theme.menu_icons[itemName] | default('question-circle') | lower }}"></i> <br />
-            {% endif %}
-            {{ __('menu.' + itemName) }}
-          </a>
-        </li>
+        {#zproo导航菜单#}
+        {% if itemName == "project" %}
+           <li class="menu-item menu-item-{{ itemName }}">
+             <a href="{{ url_for(path) }}" rel="section" target="_blank">
+               {% if theme.menu_icons.enable %}
+                 <i class="menu-item-icon fa fa-fw fa-{{theme.menu_icons[itemName] | default('question-circle') | lower }}"></i> <br />
+               {% endif %}
+               {#{{ __('menu.' + itemName) }}#}
+               {{ __('' + itemName) }}
+             </a>
+           </li>
+        {% else %}
+           <li class="menu-item menu-item-{{ itemName }}">
+             <a href="{{ url_for(path) }}" rel="section">
+               {% if theme.menu_icons.enable %}
+                 <i class="menu-item-icon fa fa-fw fa-{{theme.menu_icons[itemName] | default('question-circle') | lower }}"></i> <br />
+               {% endif %}
+               {#{{ __('menu.' + itemName) }}#}
+               {{ __('' + itemName) }}
+             </a>
+           </li>
+        {% endif %}
       {% endfor %}
 
       {% if hasSearch %}

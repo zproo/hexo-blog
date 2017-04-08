@@ -48,6 +48,9 @@ menu:
   tags: /tags
   archives: /archives
 
+#静态展示页面
+  project: https://zproo.github.io/showcase/project/
+
   #commonweal: /404.html
 
 
