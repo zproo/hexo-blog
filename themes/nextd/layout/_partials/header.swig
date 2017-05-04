@@ -1,16 +1,19 @@
 <a class="site-home" href="{{ config.root }}">{{ config.title }}</a>
 
 <div class="site-meta {% if theme.custom_logo.enabled %}custom-logo{% endif %}">
-  {#zproo-logo#}
-  {% if theme.custom_logo.image and theme.scheme === 'Muse' %}
+  {#zproo修改 logo部分#}
+  {#{% if theme.custom_logo.image and theme.scheme === 'Muse' %}#}
+  {% if theme.custom_logo.image %}
     <div class="site-meta-headline">
       <a>
-        <img class="custom-logo-image" src="{{ theme.custom_logo.image }}"
+        <img class="custom-logo-image" src="{{ theme.custom_logo.image }}" style="width: 50px"
              alt="{{ config.title }}"/>
       </a>
     </div>
   {% endif %}
 
+  {#zproo 正常标题和副标题，先注释掉#}
+  {#
   <div class="custom-logo-site-title">
     <div href="{{ config.root }}"  class="brand">
       <span class="logo-line-before"><i></i></span>
@@ -19,6 +22,7 @@
     </div>
   </div>
   <p class="site-subtitle">{{ config.subtitle }}</p>
+  #}
 </div>
 
 <div class="site-nav-toggle">

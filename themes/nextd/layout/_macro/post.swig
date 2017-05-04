@@ -147,9 +147,11 @@
         </div>
       {% endif %}
 
+
       {% if is_index %}
         {% if post.cover %}
-          <img src="{{ url_for(post.path) }}{{ post.cover }}" class="full-image">
+          {#zproo修改 封面图片显示#}
+          {#<img src="{{ url_for(post.path) }}{{ post.cover }}" class="full-image">#}
           {{ post.excerpt }}
           <div class="post-more-link text-center">
             <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#more{% endif %}" rel="contents">

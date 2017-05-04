@@ -1427,15 +1427,20 @@ pre .javascript .function {
   }
 }
 .post-more-link {
-  margin-top: 50px;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5em;
+  margin-top: 1.6em;
 }
 .post-more-link .btn {
   color: #444;
-  font-size: 14px;
+  font-size: 12px;
   background: #fff;
   border-radius: 2px;
   line-height: 2;
   margin: 0 4px 8px 4px;
+  padding: 0 10px;
+  border-radius: 25px;
 }
 .post-more-link .fa-fw {
   width: 1.285714285714286em;
@@ -1732,7 +1737,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f000f7;
+  background: #0585a2;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2779,7 +2784,7 @@ a.search-result {
   border-bottom: 0px;
 }
 .posts-expand .post-eof {
-  margin: 40px auto 30px;
+  margin: 20px auto 40px;
 }
 h1 {
   border-bottom: 1px solid #ccc;
