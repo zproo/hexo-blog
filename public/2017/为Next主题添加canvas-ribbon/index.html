@@ -1,0 +1,871 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo,GitHub,Canvas,Next,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一直关注着前端框架Vue的作者尤雨溪，前些天浏览到他的博客，被他博客的动画背景深深吸引。大体效果如下图。
+
+是的，一条飘逸、灵动的彩带！但更Amazing的是当用用户点击页面时，背景彩带也会实时响应点击事件，随机生成不同路径、不同颜色的新彩带。我瞬间中了这变幻莫测彩带条的毒，呆呆地点了半天的屏幕，好玩到根本停不下来。。
+接下来，让我们看一下如何实现这一canvas背景彩带的效果。其实只需要简单的几">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为你的网站添加动画彩带背景-尤雨溪博客">
+<meta property="og:url" content="http://zproo.github.io/2017/为Next主题添加canvas-ribbon/index.html">
+<meta property="og:site_name" content="zproo*">
+<meta property="og:description" content="一直关注着前端框架Vue的作者尤雨溪，前些天浏览到他的博客，被他博客的动画背景深深吸引。大体效果如下图。
+
+是的，一条飘逸、灵动的彩带！但更Amazing的是当用用户点击页面时，背景彩带也会实时响应点击事件，随机生成不同路径、不同颜色的新彩带。我瞬间中了这变幻莫测彩带条的毒，呆呆地点了半天的屏幕，好玩到根本停不下来。。
+接下来，让我们看一下如何实现这一canvas背景彩带的效果。其实只需要简单的几">
+<meta property="og:image" content="http://zproo.github.io/img/canvas1.png">
+<meta property="og:image" content="http://zproo.github.io/img/canvas2.png">
+<meta property="og:image" content="http://zproo.github.io/img/canvas3.png">
+<meta property="og:image" content="http://zproo.github.io/img/canvas4.png">
+<meta property="og:updated_time" content="2017-05-05T10:04:15.036Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为你的网站添加动画彩带背景-尤雨溪博客">
+<meta name="twitter:description" content="一直关注着前端框架Vue的作者尤雨溪，前些天浏览到他的博客，被他博客的动画背景深深吸引。大体效果如下图。
+
+是的，一条飘逸、灵动的彩带！但更Amazing的是当用用户点击页面时，背景彩带也会实时响应点击事件，随机生成不同路径、不同颜色的新彩带。我瞬间中了这变幻莫测彩带条的毒，呆呆地点了半天的屏幕，好玩到根本停不下来。。
+接下来，让我们看一下如何实现这一canvas背景彩带的效果。其实只需要简单的几">
+<meta name="twitter:image" content="http://zproo.github.io/img/canvas1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zproo.github.io/2017/为Next主题添加canvas-ribbon/"/>
+
+  <title> 为你的网站添加动画彩带背景-尤雨溪博客 | zproo* </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('/img/cover-ribbon.jpg');">
+      <div class="header-inner"><a class="site-home" href="/">zproo*</a>
+
+<div class="site-meta custom-logo">
+  
+  
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/logo.png" style="width: 50px"
+             alt="zproo*"/>
+      </a>
+    </div>
+  
+
+  
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+           <li class="menu-item menu-item-about">
+             <a href="/about" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+               
+               
+               about
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-tags">
+             <a href="/tags" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+               
+               
+               tags
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-archives">
+             <a href="/archives" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+               
+               
+               archives
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-project">
+             <a href="https://zproo.github.io/showcase/project/" rel="section" target="_blank">
+               
+                 <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+               
+               
+               project
+             </a>
+           </li>
+        
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+      <div class="header-post"> 
+  <div class="post-header">
+      <div class="tags">
+      
+        <a href="/tags/Hexo/" rel="tag" title="Hexo">Hexo</a>
+      
+        <a href="/tags/GitHub/" rel="tag" title="GitHub">GitHub</a>
+      
+        <a href="/tags/Canvas/" rel="tag" title="Canvas">Canvas</a>
+      
+        <a href="/tags/Next/" rel="tag" title="Next">Next</a>
+      
+        <a href="/tags/JavaScript/" rel="tag" title="JavaScript">JavaScript</a>
+      
+      </div>
+      <h1>为你的网站添加动画彩带背景-尤雨溪博客</h1>
+      <h2 class="subtitle"></h2>
+      <div class="post-time">
+        <span class="post-meta-item-text">Posted on </span>
+        <time itemprop="dateCreated" datetime="2017-04-10T20:57:25+08:00" content="2017-04-10" title="2017-04-10 20:57:25">
+          2017-04-10
+        </time>
+      </div>
+  </div>
+ </div>
+    </header>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                为你的网站添加动画彩带背景-尤雨溪博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-04-10T20:57:25+08:00" content="2017-04-10">
+              2017-04-10
+            </time>
+          </span>
+
+          
+
+          <!-- 
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/为Next主题添加canvas-ribbon/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/为Next主题添加canvas-ribbon/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+           -->
+
+          
+
+          
+          
+             <span id="/2017/为Next主题添加canvas-ribbon/" class="leancloud_visitors" data-flag-title="为你的网站添加动画彩带背景-尤雨溪博客">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一直关注着前端框架Vue的作者尤雨溪，前些天浏览到他的博客，被他博客的动画背景深深吸引。大体效果如下图。</p>
+<p><img src="/img/canvas1.png" alt="ScreenClip"></p>
+<p>是的，一条飘逸、灵动的彩带！但更Amazing的是当用用户点击页面时，背景彩带也会实时响应点击事件，随机生成不同路径、不同颜色的新彩带。我瞬间中了这变幻莫测彩带条的毒，呆呆地点了半天的屏幕，好玩到根本停不下来。。</p>
+<p>接下来，让我们看一下如何实现这一canvas背景彩带的效果。其实只需要简单的几十行代码，就能轻松实现。然后就可以添加到自己的个人网站了。</p>
+<h1 id="用到的知识"><a href="#用到的知识" class="headerlink" title="用到的知识"></a>用到的知识</h1><p>js基础+canvas</p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="1-canvas的使用"><a href="#1-canvas的使用" class="headerlink" title="1.canvas的使用"></a>1.canvas的使用</h2><p><code>CanvasRenderingContext2D</code> 接口提供的 2D 渲染背景用来绘制<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="external">canvas</a>元素，为了获得这个接口的对象，需要在<code>&lt;canvas&gt;</code>上调用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/getContext" target="_blank" rel="external">getContext()</a> ，并提供一个 <code>&quot;2d&quot;</code> 的参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'tutorial'</span>);</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure>
+<p>一旦你得到 2D 渲染背景后，你可以像下面一样绘制：</p>
+<p>（以绘制<code>路径</code>为例，此外矩形、文本、图像等）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.strokeStyle = <span class="string">'blue'</span>;</div><div class="line">ctx.moveTo(<span class="number">10</span>,<span class="number">50</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">50</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<p>绘制效果如下：</p>
+<p><img src="/img/canvas2.png" alt="ScreenClip1"></p>
+<h2 id="2-绘制折线"><a href="#2-绘制折线" class="headerlink" title="2.绘制折线"></a>2.绘制折线</h2><p>对以上代码稍作改变，使直线变为折线：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.strokeStyle = <span class="string">'blue'</span>;</div><div class="line">ctx.moveTo(<span class="number">10</span>,<span class="number">50</span>);</div><div class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">80</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">20</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">40</span>);</div><div class="line">ctx.stroke();</div><div class="line">ctx.closePath();</div></pre></td></tr></table></figure>
+<p>绘制效果如下：</p>
+<p><img src="/img/canvas3.png" alt="ScreenClip2"></p>
+<p>此时，一条与最终要实现的背景彩带在大体形状上已初具雏形。只是缺少自动绘制、路径宽度和其中每一段路径上随机的颜色。</p>
+<h2 id="3-绘制背景彩带"><a href="#3-绘制背景彩带" class="headerlink" title="3.绘制背景彩带"></a>3.绘制背景彩带</h2><p>以下是我的源代码，其中已有详细的注释信息，相信你一定能够看懂的。复制一下代码，保存为html文件，浏览器打开即可运行查看。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span></span></div><div class="line">          <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">        e.preventDefault()</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">var</span> canvasRibbon = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'canvas'</span>)[<span class="number">0</span>],</div><div class="line">        ctx = canvasRibbon.getContext(<span class="string">'2d'</span>),    <span class="comment">// 获取canvas 2d上下文</span></div><div class="line">        dpr = <span class="built_in">window</span>.devicePixelRatio || <span class="number">1</span>, <span class="comment">// the size of one CSS pixel to the size of one physical pixel.</span></div><div class="line">        width = <span class="built_in">window</span>.innerWidth,     <span class="comment">// 返回窗口的文档显示区的宽高</span></div><div class="line">        height = <span class="built_in">window</span>.innerHeight,</div><div class="line">        RIBBON_WIDE = <span class="number">90</span>,</div><div class="line">        path,</div><div class="line">        math = <span class="built_in">Math</span>,</div><div class="line">        r = <span class="number">0</span>,</div><div class="line">        PI_2 = math.PI * <span class="number">2</span>,    <span class="comment">// 圆周率*2</span></div><div class="line">        cos = math.cos,   <span class="comment">// cos函数返回一个数值的余弦值（-1~1）</span></div><div class="line">        random = math.random;   <span class="comment">// 返回0-1随机数</span></div><div class="line"></div><div class="line">    canvasRibbon.width = width * dpr;     <span class="comment">// 返回实际宽高</span></div><div class="line">    canvasRibbon.height = height * dpr;</div><div class="line">    ctx.scale(dpr, dpr);    <span class="comment">// 水平、竖直方向缩放</span></div><div class="line">    ctx.globalAlpha = <span class="number">0.6</span>;  <span class="comment">// 图形透明度</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, width, height);     <span class="comment">// 擦除之前绘制内容</span></div><div class="line">        path = [&#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: height * <span class="number">0.7</span> + RIBBON_WIDE&#125;, &#123;<span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: height * <span class="number">0.7</span> - RIBBON_WIDE&#125;];</div><div class="line">        <span class="comment">// 路径没有填满屏幕宽度时，绘制路径</span></div><div class="line">        <span class="keyword">while</span> (path[<span class="number">1</span>].x &lt; width + RIBBON_WIDE) &#123;</div><div class="line">            draw(path[<span class="number">0</span>], path[<span class="number">1</span>])     <span class="comment">// 调用绘制方法</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 绘制彩带每一段路径</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">start, end</span>) </span>&#123;</div><div class="line">        ctx.beginPath();    <span class="comment">// 创建一个新的路径</span></div><div class="line">        ctx.moveTo(start.x, start.y);   <span class="comment">// path起点</span></div><div class="line">        ctx.lineTo(end.x, end.y);   <span class="comment">// path终点</span></div><div class="line">        <span class="keyword">var</span> nextX = end.x + (random() * <span class="number">2</span> - <span class="number">0.25</span>) * RIBBON_WIDE,</div><div class="line">            nextY = geneY(end.y);</div><div class="line">        ctx.lineTo(nextX, nextY);</div><div class="line">        ctx.closePath();</div><div class="line"></div><div class="line">        r -= PI_2 / <span class="number">-50</span>;</div><div class="line">        <span class="comment">// 随机生成并设置canvas路径16进制颜色</span></div><div class="line">        ctx.fillStyle = <span class="string">'#'</span> + (cos(r) * <span class="number">127</span> + <span class="number">128</span> &lt;&lt; <span class="number">16</span> | cos(r + PI_2 / <span class="number">3</span>) * <span class="number">127</span> + <span class="number">128</span> &lt;&lt; <span class="number">8</span> | cos(r + PI_2 / <span class="number">3</span> * <span class="number">2</span>) * <span class="number">127</span> + <span class="number">128</span>).toString(<span class="number">16</span>);</div><div class="line">        ctx.fill();     <span class="comment">// 根据当前样式填充路径</span></div><div class="line">        path[<span class="number">0</span>] = path[<span class="number">1</span>];    <span class="comment">// 起点更新为当前终点</span></div><div class="line">        path[<span class="number">1</span>] = &#123;<span class="attr">x</span>: nextX, <span class="attr">y</span>: nextY&#125;     <span class="comment">// 更新终点</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 获取下一路径终点的y坐标值</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">geneY</span>(<span class="params">y</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> temp = y + (random() * <span class="number">2</span> - <span class="number">1.1</span>) * RIBBON_WIDE;</div><div class="line">        <span class="keyword">return</span> (temp &gt; height || temp &lt; <span class="number">0</span>) ? geneY(y) : temp</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">document</span>.onclick = init;</div><div class="line">    <span class="built_in">document</span>.ontouchstart = init;</div><div class="line">    init();</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>此外我还提供<a href="https://github.com/zproo/canvas-ribbon" target="_blank" rel="external">简单一条命令为你的网页添加canvas-ribbon背景彩带</a>(Github源码)的方法。你可以直接访问我的github仓库获得，只需要一行代码就可以为你的网站添加上面介绍的canvas-ribbon背景彩带了。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>在为我自己的博客添加成功后，我还对Hexo 的Next主题添加了这一功能（只适用于Next的Pisces主题），并给Next作者发了PR。</p>
+<p>现在此提交已被作者Merge，所以如果你的博客使用了Hexo的Next主题，只需要在<code>主题配置文件</code>中找到<code>canvas-ribbon</code>属性，并设置为<code>true</code>，即可拥有背景彩带的效果。</p>
+<p><img src="/img/canvas4.png" alt="ScreenClip3"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/beginPath" target="_blank" rel="external">CanvasRenderingContext2D-路径</a></li>
+<li><a href="http://evanyou.me/" target="_blank" rel="external">evanyou</a></li>
+</ul>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+            <a href="/tags/GitHub/" rel="tag">#GitHub</a>
+          
+            <a href="/tags/Canvas/" rel="tag">#Canvas</a>
+          
+            <a href="/tags/Next/" rel="tag">#Next</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/从0到有-如何搭建个人博客/" rel="next" title="从0到有 如何搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 从0到有 如何搭建个人博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/git bash修改主题配色/" rel="prev" title="git bash修改主题配色">
+                git bash修改主题配色 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="zproo" />
+          <p class="site-author-name" itemprop="name">zproo</p>
+          <p class="site-description motion-element" itemprop="description">研一、现居沈阳、就读于东北大学计算机专业、javascript、java、程序员。座右铭:今天不想跑，所以才去跑。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zproo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zproo" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用到的知识"><span class="nav-text">用到的知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现思路"><span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-canvas的使用"><span class="nav-text">1.canvas的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-绘制折线"><span class="nav-text">2.绘制折线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-绘制背景彩带"><span class="nav-text">3.绘制背景彩带</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-text">后记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zproo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/zproo/hexo-blog">
+    Next
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'https-zproo-github-io';
+      var disqus_identifier = '2017/为Next主题添加canvas-ribbon/';
+      var disqus_title = "为你的网站添加动画彩带背景-尤雨溪博客";
+      var disqus_url = 'http://zproo.github.io/2017/为Next主题添加canvas-ribbon/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz", "Gq4sJwz8T6cywiaHlBGFDbE4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

@@ -436,3 +436,12 @@ images: images
 
 # Theme version
 version: 5.0.1
+
+# zproo添加
+url: http://zproo.github.io
+
+sitemap:
+  path: sitemap.xml
+
+baidusitemap:
+  path: baidusitemap.xml

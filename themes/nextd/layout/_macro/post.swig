@@ -147,40 +147,36 @@
         </div>
       {% endif %}
 
-
       {% if is_index %}
-        {% if post.cover %}
-          {#zproo修改 封面图片显示#}
-          {#<img src="{{ url_for(post.path) }}{{ post.cover }}" class="full-image">#}
-          {{ post.excerpt }}
-          <div class="post-more-link text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#more{% endif %}" rel="contents">
-              {{ __('post.read_more') }} &raquo;
-            </a>
-          </div>
-        {% elif post.description %}
+        {% if post.description and theme.excerpt_description %}
           {{ post.description }}
+          <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="{{ url_for(post.path) }}">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
-        {% elif post.excerpt %}
+          <!--/noindex-->
+        {% elif post.excerpt  %}
           {{ post.excerpt }}
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#more{% endif %}" rel="contents">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
+          <!--/noindex-->
         {% elif theme.auto_excerpt.enable %}
           {% set content = post.content | striptags %}
           {{ content.substring(0, theme.auto_excerpt.length) }}
           {% if content.length > theme.auto_excerpt.length %}...{% endif %}
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#more{% endif %}" rel="contents">
+            <a class="btn" href="{{ url_for(post.path) }}{% if theme.scroll_to_more %}#{{ __('post.more') }}{% endif %}" rel="contents">
               {{ __('post.read_more') }} &raquo;
             </a>
           </div>
+          <!--/noindex-->
         {% else %}
           {% if post.type === 'picture' %}
             <a href="{{ url_for(post.path) }}">{{ post.content }}</a>
@@ -190,9 +186,9 @@
         {% endif %}
       {% else %}
         {{ post.content }}
-        {{ theme.post_footer }}
       {% endif  %}
     </div>
+
 
     <div>
       {% if not is_index %}

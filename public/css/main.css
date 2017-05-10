@@ -901,9 +901,9 @@ pre .javascript .function {
 }
 .site-home {
   z-index: 2;
-  position: relative;
+  position: absolute;
   top: 0;
-  display: inline-block;
+  display: block;
   color: #fff;
   font-size: 20px;
   line-height: 20px;
@@ -940,7 +940,6 @@ pre .javascript .function {
   transform: scaleX(1);
 }
 .site-meta {
-  margin: 20px 0 0;
   text-align: center;
 }
 @media (max-width: 767px) {
@@ -1427,10 +1426,9 @@ pre .javascript .function {
   }
 }
 .post-more-link {
-  text-align: left;
-  border-top: 1px solid #ddd;
-  padding-top: 0.5em;
-  margin-top: 1.6em;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  margin-top: 1em;
 }
 .post-more-link .btn {
   color: #444;
@@ -1737,7 +1735,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0585a2;
+  background: #251aff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2334,23 +2332,23 @@ a.search-result {
   background-color: #808080;
   background-attachment: scroll;
   background-size: cover;
-  min-height: 220px;
+  height: 220px;
 }
 @media (min-width: 1600px) {
   .header {
-    min-height: 300px;
+    height: 300px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header {
     width: auto;
-    min-height: 130px;
+    height: 130px;
   }
 }
 @media (max-width: 767px) {
   .header {
     width: auto;
-    min-height: 80px;
+    height: 200px;
   }
 }
 .header-inner {
@@ -2493,7 +2491,6 @@ a.search-result {
   float: right;
 }
 .site-meta {
-  padding: 20px 0;
   color: #fff;
 /* background: $black-deep; */
 }
@@ -2779,11 +2776,35 @@ a.search-result {
     padding: 0px 5px;
   }
 }
+.header-inner {
+  position: relative;
+  height: 100%;
+}
+.site-meta {
+  position: relative;
+  height: 100%;
+  width: 100px;
+  margin: 0 auto;
+}
+.site-meta-headline {
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  top: 48%;
+  margin-top: -20px;
+}
 .posts-expand .post-title {
+  text-align: left;
   font-weight: 400;
   border-bottom: 0px;
 }
+.posts-expand .post-meta {
+  text-align: left;
+  margin-top: -10px;
+}
 .posts-expand .post-eof {
+  display: none;
   margin: 20px auto 40px;
 }
 h1 {
@@ -2803,7 +2824,4 @@ body {
 pre,
 .highlight {
   margin: 10px 0;
-}
-.posts-expand .post-meta {
-  margin-top: -10px;
 }
