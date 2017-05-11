@@ -1735,7 +1735,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #251aff;
+  background: #c16fa1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2775,6 +2775,9 @@ a.search-result {
     line-height: inherit;
     padding: 0px 5px;
   }
+}
+.header-inner-post {
+  padding-bottom: 60px;
 }
 .header-inner {
   position: relative;
