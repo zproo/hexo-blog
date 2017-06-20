@@ -8,10 +8,11 @@ favicon: /favicon.ico
 # Page covers for follow pages, whom height is greater than 400px.
 # Home cover is required, which is default cover for other pages.
 cover:
-  home: /images/home_bg.jpg
-  tag: /images/home_bg.jpg
-  archive: /images/home_bg.jpg
-  category: /images/home_bg.jpg
+#  home: /images/home_bg.jpg
+  home: http://ortur5wom.bkt.clouddn.com/home_bg.jpg
+  tag: http://ortur5wom.bkt.clouddn.com/home_bg.jpg
+  archive: http://ortur5wom.bkt.clouddn.com/home_bg.jpg
+  category: http://ortur5wom.bkt.clouddn.com/home_bg.jpg
   # post:
   # about:
   # pages:

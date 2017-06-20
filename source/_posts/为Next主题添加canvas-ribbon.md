@@ -3,12 +3,12 @@ title: 为你的网站添加动画彩带背景-尤雨溪博客
 comment: true
 date: 2017-04-10 20:57:25
 tags: [Hexo, GitHub, Canvas,Next,JavaScript]
-cover: /img/cover-ribbon.jpg
+cover: http://ortur5wom.bkt.clouddn.com/cover-ribbon.jpg
 ---
 
 一直关注着前端框架Vue的作者尤雨溪，前些天浏览到他的博客，被他博客的动画背景深深吸引。大体效果如下图。
 
-![ScreenClip](/img/canvas1.png)
+![ScreenClip](http://ortur5wom.bkt.clouddn.com/canvas1.png)
 
 是的，一条飘逸、灵动的彩带！但更Amazing的是当用用户点击页面时，背景彩带也会实时响应点击事件，随机生成不同路径、不同颜色的新彩带。我瞬间中了这变幻莫测彩带条的毒，呆呆地点了半天的屏幕，好玩到根本停不下来。。
 
@@ -44,7 +44,7 @@ ctx.stroke();
 
 绘制效果如下：
 
-![ScreenClip1](/img/canvas2.png)
+![ScreenClip1](http://ortur5wom.bkt.clouddn.com/canvas2.png)
 
 ## 2.绘制折线
 
@@ -63,7 +63,7 @@ ctx.closePath();
 
 绘制效果如下：
 
-![ScreenClip2](/img/canvas3.png)
+![ScreenClip2](http://ortur5wom.bkt.clouddn.com/canvas3.png)
 
 此时，一条与最终要实现的背景彩带在大体形状上已初具雏形。只是缺少自动绘制、路径宽度和其中每一段路径上随机的颜色。
 
@@ -153,7 +153,7 @@ ctx.closePath();
 
 现在此提交已被作者Merge，所以如果你的博客使用了Hexo的Next主题，只需要在`主题配置文件`中找到`canvas-ribbon`属性，并设置为`true`，即可拥有背景彩带的效果。
 
-![ScreenClip3](/img/canvas4.png)
+![ScreenClip3](http://ortur5wom.bkt.clouddn.com/canvas4.png)
 
 # 参考资料
 

@@ -36,7 +36,7 @@ var result = tplEngine(tpl, data);   // 通过模板引擎将数据给到模板
 
 大体过程是这样的：
 
-![mvc](/img/mvc.gif)
+![mvc](http://ortur5wom.bkt.clouddn.com/mvc.gif)
 
 ### 2.1.1 传统方式的缺点
 

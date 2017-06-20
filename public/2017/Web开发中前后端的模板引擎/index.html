@@ -96,12 +96,12 @@
 <meta property="og:url" content="http://zproo.github.io/2017/Web开发中前后端的模板引擎/index.html">
 <meta property="og:site_name" content="zproo*">
 <meta property="og:description" content="最近在学习Node.js，所以想自己实践一个用Node做后端的小项目，过程中不可避免的涉及到了模板引擎的问题。但在选择模板引擎的时被五花八门的模板引擎迷了眼。搜索到的java使用的模板有velocity、FreeMarker，Node使用的模板引擎jade、Ejs、Swig等等，甚至连一直使用的Angular等前端开发框架也成了模板引擎？这让我陷入了深深地自我怀疑，现在就来看一下模板引擎到底是什么">
-<meta property="og:image" content="http://zproo.github.io/img/mvc.gif">
-<meta property="og:updated_time" content="2017-05-26T06:40:53.940Z">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/mvc.gif">
+<meta property="og:updated_time" content="2017-06-20T04:08:10.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web开发中前后端的模板引擎">
 <meta name="twitter:description" content="最近在学习Node.js，所以想自己实践一个用Node做后端的小项目，过程中不可避免的涉及到了模板引擎的问题。但在选择模板引擎的时被五花八门的模板引擎迷了眼。搜索到的java使用的模板有velocity、FreeMarker，Node使用的模板引擎jade、Ejs、Swig等等，甚至连一直使用的Angular等前端开发框架也成了模板引擎？这让我陷入了深深地自我怀疑，现在就来看一下模板引擎到底是什么">
-<meta name="twitter:image" content="http://zproo.github.io/img/mvc.gif">
+<meta name="twitter:image" content="http://ortur5wom.bkt.clouddn.com/mvc.gif">
 
 
 
@@ -148,7 +148,7 @@
   <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
     
-    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('/images/home_bg.jpg');">
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('http://ortur5wom.bkt.clouddn.com/home_bg.jpg');">
       <div class="header-inner-post"><a class="site-home" href="/">zproo*</a>
 
 <div class="site-meta custom-logo">
@@ -365,7 +365,7 @@
 <p>这就是一个模板引擎干的事情。</p>
 <h1 id="2-模板引擎的意义"><a href="#2-模板引擎的意义" class="headerlink" title="2. 模板引擎的意义"></a>2. 模板引擎的意义</h1><h2 id="2-1-后端模板引擎"><a href="#2-1-后端模板引擎" class="headerlink" title="2.1 后端模板引擎"></a>2.1 后端模板引擎</h2><p>说模板引擎，要从后端说起。现在后端开发基本是MVC的架构模式。从Model层获取数据，然后将数据传到 View 层渲染（渲染成 HTML 文件），而 View 层，一般都会用到模板引擎。</p>
 <p>大体过程是这样的：</p>
-<p><img src="/img/mvc.gif" alt="mvc"></p>
+<p><img src="http://ortur5wom.bkt.clouddn.com/mvc.gif" alt="mvc"></p>
 <h3 id="2-1-1-传统方式的缺点"><a href="#2-1-1-传统方式的缺点" class="headerlink" title="2.1.1 传统方式的缺点"></a>2.1.1 传统方式的缺点</h3><p>后端模板引擎最常见的使用java之类的后端语言模板，这样做有利于 SEO，并且与前端请求接口的方式相比，少了个 HTTP 请求，理论上加载速度可能会稍微快些。其最大的问题就是模板文件的耦合度太高，出了问题谁都不想来解决，前端人员看不到数据，后端人员不懂页面。所以一般的后端都会写js。。不利于前后端分离，降低了开发效率。</p>
 <h2 id="2-2-前端模板引擎"><a href="#2-2-前端模板引擎" class="headerlink" title="2.2 前端模板引擎"></a>2.2 前端模板引擎</h2><p>Ajax的出现使前后端的分离成为可能。后端专注于业务逻辑，给前端提供接口；而前端通过 AJAX 的方式向后端请求数据，然后动态的渲染页面。很好的解决了使用后端模板带来的前后端耦合问题。具体开发场景变成了这样：</p>
 <p>数据接口获得数据：</p>
@@ -505,7 +505,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -515,7 +515,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
