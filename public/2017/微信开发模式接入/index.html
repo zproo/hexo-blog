@@ -1,0 +1,861 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="微信开发,Servlet,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="微信开发模式由于微信的广泛使用，微信作为一个集成用户信息、地理位置信息、支付等多种功能的强大平台的优势和便利越来越明显。微信公众号+小程序开发也提供了丰富的功能接口，让第三方平台可以容易的使用这些功能，避免了自己去构建这些功能的麻烦。比如“用户系统”，使用微信账户信息比起构建自己的用户系统还拥有更好的用户基础和用户友好性。而微信开发模式的接入和开发规范是一套固定的流程， 所以对于这种可以复用的代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信开发模式接入">
+<meta property="og:url" content="http://zproo.github.io/2017/微信开发模式接入/index.html">
+<meta property="og:site_name" content="zproo*">
+<meta property="og:description" content="微信开发模式由于微信的广泛使用，微信作为一个集成用户信息、地理位置信息、支付等多种功能的强大平台的优势和便利越来越明显。微信公众号+小程序开发也提供了丰富的功能接口，让第三方平台可以容易的使用这些功能，避免了自己去构建这些功能的麻烦。比如“用户系统”，使用微信账户信息比起构建自己的用户系统还拥有更好的用户基础和用户友好性。而微信开发模式的接入和开发规范是一套固定的流程， 所以对于这种可以复用的代码">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%8E%A5%E5%85%A5.png">
+<meta property="og:updated_time" content="2017-07-11T09:24:48.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信开发模式接入">
+<meta name="twitter:description" content="微信开发模式由于微信的广泛使用，微信作为一个集成用户信息、地理位置信息、支付等多种功能的强大平台的优势和便利越来越明显。微信公众号+小程序开发也提供了丰富的功能接口，让第三方平台可以容易的使用这些功能，避免了自己去构建这些功能的麻烦。比如“用户系统”，使用微信账户信息比起构建自己的用户系统还拥有更好的用户基础和用户友好性。而微信开发模式的接入和开发规范是一套固定的流程， 所以对于这种可以复用的代码">
+<meta name="twitter:image" content="http://ortur5wom.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%8E%A5%E5%85%A5.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zproo.github.io/2017/微信开发模式接入/"/>
+
+  <title> 微信开发模式接入 | zproo* </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('http://ortur5wom.bkt.clouddn.com/home_bg.jpg');">
+      <div class="header-inner-post"><a class="site-home" href="/">zproo*</a>
+
+<div class="site-meta custom-logo">
+  
+  
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/logo.png" style="width: 50px"
+             alt="zproo*"/>
+      </a>
+    </div>
+  
+
+  
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+           <li class="menu-item menu-item-about">
+             <a href="/about" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+               
+               
+               about
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-tags">
+             <a href="/tags" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+               
+               
+               tags
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-archives">
+             <a href="/archives" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+               
+               
+               archives
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-project">
+             <a href="https://zproo.github.io/showcase/project/" rel="section" target="_blank">
+               
+                 <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+               
+               
+               project
+             </a>
+           </li>
+        
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+      <div class="header-post"> 
+  <div class="post-header">
+      <div class="tags">
+      
+        <a href="/tags/微信开发/" rel="tag" title="微信开发">微信开发</a>
+      
+        <a href="/tags/Servlet/" rel="tag" title="Servlet">Servlet</a>
+      
+        <a href="/tags/Java/" rel="tag" title="Java">Java</a>
+      
+      </div>
+      <h1>微信开发模式接入</h1>
+      <h2 class="subtitle"></h2>
+      <div class="post-time">
+        <span class="post-meta-item-text">Posted on </span>
+        <time itemprop="dateCreated" datetime="2017-06-22T17:16:50+08:00" content="2017-06-22" title="2017-06-22 17:16:50">
+          2017-06-22
+        </time>
+      </div>
+  </div>
+ </div>
+    </header>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                微信开发模式接入
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-06-22T17:16:50+08:00" content="2017-06-22">
+              2017-06-22
+            </time>
+          </span>
+
+          
+
+          <!-- 
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/微信开发模式接入/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/微信开发模式接入/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+           -->
+
+          
+
+          
+          
+             <span id="/2017/微信开发模式接入/" class="leancloud_visitors" data-flag-title="微信开发模式接入">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="微信开发模式"><a href="#微信开发模式" class="headerlink" title="微信开发模式"></a>微信开发模式</h1><p>由于微信的广泛使用，微信作为一个集成用户信息、地理位置信息、支付等多种功能的强大平台的优势和便利越来越明显。微信公众号+小程序开发也提供了丰富的功能接口，让第三方平台可以容易的使用这些功能，避免了自己去构建这些功能的麻烦。比如“用户系统”，使用微信账户信息比起构建自己的用户系统还拥有更好的用户基础和用户友好性。而微信开发模式的接入和开发规范是一套固定的流程， 所以对于这种可以复用的代码，仔细的梳理一遍会为以后省去不少麻烦。</p>
+<p>接入微信公众平台，我们需要完成三步</p>
+<h1 id="1、填写服务器配置"><a href="#1、填写服务器配置" class="headerlink" title="1、填写服务器配置"></a>1、填写服务器配置</h1><p><img src="http://ortur5wom.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%8E%A5%E5%85%A5.png" alt="Image"></p>
+<p>注释： </p>
+<blockquote>
+<p>url: 开发者用来接收微信消息和事件的接口URL<br>token: 由开发者可以任意填写，用作生成签名<br>EncodingAESKey: 由开发者手动填写或随机生成，将用作消息体加解密密钥</p>
+</blockquote>
+<h1 id="2、验证消息的确来自微信服务器"><a href="#2、验证消息的确来自微信服务器" class="headerlink" title="2、验证消息的确来自微信服务器"></a>2、验证消息的确来自微信服务器</h1><p>验证服务器地址的有效性上面配置好后，微信服务器将发送GET请求到填写的服务器地址URL上，GET请求携带参数如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signature</td>
+<td>微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数。</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>随机数</td>
+</tr>
+<tr>
+<td>echostr</td>
+<td>随机字符串</td>
+</tr>
+</tbody>
+</table>
+<p>我们接入代码要做的：</p>
+<blockquote>
+<p>1）将token、timestamp、nonce三个参数进行字典序排序<br>2）将三个参数字符串拼接成一个字符串进行sha1加密<br>3）开发者获得加密后的字符串可与signature对比，标识该请求来源于微信</p>
+</blockquote>
+<h1 id="3、依据接口文档实现业务逻辑"><a href="#3、依据接口文档实现业务逻辑" class="headerlink" title="3、依据接口文档实现业务逻辑"></a>3、依据接口文档实现业务逻辑</h1><p>我们使用基本的servlet来实现接入的处理逻辑</p>
+<h2 id="1-写一个servlet-WeixinServlet-处理微信服务器发来的信息"><a href="#1-写一个servlet-WeixinServlet-处理微信服务器发来的信息" class="headerlink" title="1. 写一个servlet(WeixinServlet)处理微信服务器发来的信息"></a>1. 写一个servlet(WeixinServlet)处理微信服务器发来的信息</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.immoc.servlet;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.imooc.util.CheckUtil;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.servlet.ServletException;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.PrintWriter;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by zproo on 2017/6/22.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeixinServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</div><div class="line">        String signature = req.getParameter(<span class="string">"signature"</span>);</div><div class="line">        String timestamp = req.getParameter(<span class="string">"timestamp"</span>);</div><div class="line">        String nonce = req.getParameter(<span class="string">"nonce"</span>);</div><div class="line">        String echostr = req.getParameter(<span class="string">"echostr"</span>);</div><div class="line"></div><div class="line">        PrintWriter out = resp.getWriter();</div><div class="line">        <span class="keyword">if</span> (CheckUtil.checkSignature(signature, timestamp, nonce)) &#123;</div><div class="line">            out.print(echostr);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</div><div class="line">        <span class="keyword">super</span>.doPost(req, resp);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-把微信服务器发来信息的处理函数封装在CheckUtil类中"><a href="#2-把微信服务器发来信息的处理函数封装在CheckUtil类中" class="headerlink" title="2.把微信服务器发来信息的处理函数封装在CheckUtil类中"></a>2.把微信服务器发来信息的处理函数封装在CheckUtil类中</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.imooc.util;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.lang.reflect.Array;</div><div class="line"><span class="keyword">import</span> java.security.MessageDigest;</div><div class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by zproo on 2017/6/22.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckUtil</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String token = <span class="string">"zproo"</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkSignature</span><span class="params">(String signature, String timestamp, String nonce)</span> </span>&#123;</div><div class="line">        String[] arr = <span class="keyword">new</span> String[]&#123;token, timestamp, nonce&#125;;</div><div class="line"></div><div class="line">        <span class="comment">// 排序</span></div><div class="line">        Arrays.sort(arr);</div><div class="line">        <span class="comment">// 生成字符串</span></div><div class="line">        StringBuffer content = <span class="keyword">new</span> StringBuffer();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">            content.append(arr[i]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// sha1加密</span></div><div class="line">        String temp = SHA1(content.toString());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> temp.equals(signature);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * SHA1加密算法</div><div class="line">     * <span class="doctag">@param</span> decript</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">SHA1</span><span class="params">(String decript)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            MessageDigest digest = MessageDigest.getInstance(<span class="string">"SHA-1"</span>);</div><div class="line">            digest.update(decript.getBytes());</div><div class="line">            <span class="keyword">byte</span> messageDigest[] = digest.digest();</div><div class="line">            StringBuffer hexString = <span class="keyword">new</span> StringBuffer();</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; messageDigest.length; i++) &#123;</div><div class="line">                String shaHex = Integer.toHexString(messageDigest[i] &amp; <span class="number">0xFF</span>);</div><div class="line">                <span class="keyword">if</span> (shaHex.length() &lt; <span class="number">2</span>) &#123;</div><div class="line">                    hexString.append(<span class="number">0</span>);</div><div class="line">                &#125;</div><div class="line">                hexString.append(shaHex);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> hexString.toString();</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-在web-xml配置servlet"><a href="#3-在web-xml配置servlet" class="headerlink" title="3.在web.xml配置servlet"></a>3.在web.xml配置servlet</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>weixinServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.immoc.servlet.WeixinServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>weixinServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/wx.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信开发/" rel="tag">#微信开发</a>
+          
+            <a href="/tags/Servlet/" rel="tag">#Servlet</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/ngrok外网映射/" rel="next" title="ngrok外网映射">
+                <i class="fa fa-chevron-left"></i> ngrok外网映射
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="zproo" />
+          <p class="site-author-name" itemprop="name">zproo</p>
+          <p class="site-description motion-element" itemprop="description">研一、现居沈阳、就读于东北大学计算机专业、javascript、java、程序员。座右铭:今天不想跑，所以才去跑。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zproo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zproo" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#微信开发模式"><span class="nav-text">微信开发模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1、填写服务器配置"><span class="nav-text">1、填写服务器配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2、验证消息的确来自微信服务器"><span class="nav-text">2、验证消息的确来自微信服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3、依据接口文档实现业务逻辑"><span class="nav-text">3、依据接口文档实现业务逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-写一个servlet-WeixinServlet-处理微信服务器发来的信息"><span class="nav-text">1. 写一个servlet(WeixinServlet)处理微信服务器发来的信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-把微信服务器发来信息的处理函数封装在CheckUtil类中"><span class="nav-text">2.把微信服务器发来信息的处理函数封装在CheckUtil类中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-在web-xml配置servlet"><span class="nav-text">3.在web.xml配置servlet</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zproo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/zproo/hexo-blog">
+    Next
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'https-zproo-github-io';
+      var disqus_identifier = '2017/微信开发模式接入/';
+      var disqus_title = "微信开发模式接入";
+      var disqus_url = 'http://zproo.github.io/2017/微信开发模式接入/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz", "Gq4sJwz8T6cywiaHlBGFDbE4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
