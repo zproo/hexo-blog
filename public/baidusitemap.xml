@@ -4,6 +4,25 @@
 
     
   <url>
+    <loc>http://zproo.github.io/2017/HttpClient%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2017-10-14T08:57:20.282Z</lastmod>
+    <data>
+        <display>
+        <title>HttpClient学习记录</title>
+        <pubTime>2017-10-14T08:55:10.000Z</pubTime>
+        
+        <tag>HttpClient</tag>
+         
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zproo.github.io/2017/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%8E%A5%E5%85%A5/</loc>
     <lastmod>2017-07-11T09:24:48.817Z</lastmod>
     <data>
@@ -11,11 +30,11 @@
         <title>微信开发模式接入</title>
         <pubTime>2017-06-22T09:16:50.000Z</pubTime>
         
+        <tag>Java</tag>
+         
         <tag>微信开发</tag>
          
         <tag>Servlet</tag>
-         
-        <tag>Java</tag>
          
          
            

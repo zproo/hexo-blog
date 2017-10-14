@@ -1,0 +1,839 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HttpClient,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="一、前期准备
+HttpClient is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore. It also provides reusable components for client-side authentication, HTTP state management, and HTTP connection m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HttpClient学习记录">
+<meta property="og:url" content="http://zproo.github.io/2017/HttpClient学习记录/index.html">
+<meta property="og:site_name" content="zproo*">
+<meta property="og:description" content="一、前期准备
+HttpClient is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore. It also provides reusable components for client-side authentication, HTTP state management, and HTTP connection m">
+<meta property="og:updated_time" content="2017-10-14T08:57:20.282Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HttpClient学习记录">
+<meta name="twitter:description" content="一、前期准备
+HttpClient is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore. It also provides reusable components for client-side authentication, HTTP state management, and HTTP connection m">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zproo.github.io/2017/HttpClient学习记录/"/>
+
+  <title> HttpClient学习记录 | zproo* </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('http://ortur5wom.bkt.clouddn.com/home_bg.jpg');">
+      <div class="header-inner-post"><a class="site-home" href="/">zproo*</a>
+
+<div class="site-meta custom-logo">
+  
+  
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/logo.png" style="width: 50px"
+             alt="zproo*"/>
+      </a>
+    </div>
+  
+
+  
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+           <li class="menu-item menu-item-about">
+             <a href="/about" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+               
+               
+               about
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-tags">
+             <a href="/tags" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+               
+               
+               tags
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-archives">
+             <a href="/archives" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+               
+               
+               archives
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-project">
+             <a href="https://zproo.github.io/showcase/project/" rel="section" target="_blank">
+               
+                 <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+               
+               
+               project
+             </a>
+           </li>
+        
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+      <div class="header-post"> 
+  <div class="post-header">
+      <div class="tags">
+      
+        <a href="/tags/HttpClient/" rel="tag" title="HttpClient">HttpClient</a>
+      
+        <a href="/tags/Java/" rel="tag" title="Java">Java</a>
+      
+      </div>
+      <h1>HttpClient学习记录</h1>
+      <h2 class="subtitle"></h2>
+      <div class="post-time">
+        <span class="post-meta-item-text">Posted on </span>
+        <time itemprop="dateCreated" datetime="2017-10-14T16:55:10+08:00" content="2017-10-14" title="2017-10-14 16:55:10">
+          2017-10-14
+        </time>
+      </div>
+  </div>
+ </div>
+    </header>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HttpClient学习记录
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-10-14T16:55:10+08:00" content="2017-10-14">
+              2017-10-14
+            </time>
+          </span>
+
+          
+
+          <!-- 
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/HttpClient学习记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/HttpClient学习记录/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+           -->
+
+          
+
+          
+          
+             <span id="/2017/HttpClient学习记录/" class="leancloud_visitors" data-flag-title="HttpClient学习记录">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h1><blockquote>
+<p><a href="https://hc.apache.org/httpcomponents-client-ga/index.html" target="_blank" rel="external">HttpClient</a> is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore. It also provides reusable components for client-side authentication, HTTP state management, and HTTP connection management. HttpComponents Client is a successor of and replacement for <a href="http://hc.apache.org/httpclient-legacy/index.html" target="_blank" rel="external">Commons HttpClient 3.x</a>. Users of Commons HttpClient are strongly encouraged to upgrade.</p>
+</blockquote>
+<p><strong>总结:</strong> HttpClient 是apache 组织下面的一个用于处理HTTP 请求和响应的开源工具。</p>
+<p>需要的jar包：</p>
+<p>​    httpclient-4.3.6.jar、httpcore-4.3.3.jar、httpmime-4.3.6.jar、commons-codec-1.6.jar。</p>
+<h1 id="二、操作步骤"><a href="#二、操作步骤" class="headerlink" title="二、操作步骤"></a>二、操作步骤</h1><p>由于HttpClient从4.X开始，基本的get/post 等http请求实现方式与之前版本的写法有很大的差异，所以在此总结一下4.X版本之后的官方推荐写法。</p>
+<p><strong>操作顺序：</strong> </p>
+<ol>
+<li>创建CloseableHttpClient对象</li>
+<li>创建请求方法实例：HttpGet/HttpPost</li>
+<li>（可选）需要请求参数时<ul>
+<li>HttpGet/HttpPost都可以使用setParams方法添加参数（deprecated 已过时）</li>
+<li>对于HttpPost方法可以使用SetEntity(HttpEntity entity)参加请求参数</li>
+<li>对于HttpGet方法，可以通过拼接url的方式添加请求参数</li>
+</ul>
+</li>
+<li>调用CloseableHttpClient对象的execute(HttpUriRequest request)发送请求，该方法返回一个CloseableHttpResponse。</li>
+<li>通过CloseableHttpResponse对象获取服务器的响应内容。</li>
+<li>释放连接。无论执行方法是否成功，都必须释放连接</li>
+</ol>
+<h1 id="三、代码实例"><a href="#三、代码实例" class="headerlink" title="三、代码实例"></a>三、代码实例</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.learn.http;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.http.HttpEntity;</div><div class="line"><span class="keyword">import</span> org.apache.http.NameValuePair;</div><div class="line"><span class="keyword">import</span> org.apache.http.ParseException;</div><div class="line"><span class="keyword">import</span> org.apache.http.client.ClientProtocolException;</div><div class="line"><span class="keyword">import</span> org.apache.http.client.entity.UrlEncodedFormEntity;</div><div class="line"><span class="keyword">import</span> org.apache.http.client.methods.CloseableHttpResponse;</div><div class="line"><span class="keyword">import</span> org.apache.http.client.methods.HttpGet;</div><div class="line"><span class="keyword">import</span> org.apache.http.client.methods.HttpPost;</div><div class="line"><span class="keyword">import</span> org.apache.http.impl.client.CloseableHttpClient;</div><div class="line"><span class="keyword">import</span> org.apache.http.impl.client.HttpClients;</div><div class="line"><span class="keyword">import</span> org.apache.http.message.BasicNameValuePair;</div><div class="line"><span class="keyword">import</span> org.apache.http.util.EntityUtils;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpSend</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// post请求百度地址，返回404</span></div><div class="line">		<span class="keyword">new</span> HttpSend().post(<span class="string">"http://www.baidu.com"</span>);</div><div class="line">		<span class="keyword">new</span> HttpSend().get(<span class="string">"http://www.baidu.com"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 发送 post请求访问本地应用并根据传递参数不同返回不同结果</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">post</span><span class="params">(String url)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">// 创建默认的httpClient实例.</span></div><div class="line">		CloseableHttpClient httpclient = HttpClients.createDefault();</div><div class="line">		<span class="comment">// 创建httppost</span></div><div class="line">		HttpPost httppost = <span class="keyword">new</span> HttpPost(url);</div><div class="line">		</div><div class="line">		<span class="comment">// 创建参数队列</span></div><div class="line">		List&lt;NameValuePair&gt; formparams = <span class="keyword">new</span> ArrayList&lt;NameValuePair&gt;();</div><div class="line">		<span class="comment">// 添加参数</span></div><div class="line">		<span class="comment">// formparams.add(new BasicNameValuePair("gg", "1"));</span></div><div class="line"></div><div class="line">		UrlEncodedFormEntity uefEntity;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="comment">//传入空参数，创建实体对象</span></div><div class="line">			uefEntity = <span class="keyword">new</span> UrlEncodedFormEntity(formparams, <span class="string">"UTF-8"</span>);</div><div class="line">			<span class="comment">//设置post对象的实体对象</span></div><div class="line">			httppost.setEntity(uefEntity);</div><div class="line">			System.out.println(<span class="string">"executing post request "</span> + httppost.getURI());</div><div class="line">			<span class="comment">//执行post请求</span></div><div class="line">			CloseableHttpResponse response = httpclient.execute(httppost);</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="comment">//获取请求结果对象</span></div><div class="line">				HttpEntity entity = response.getEntity();</div><div class="line">				<span class="keyword">if</span> (entity != <span class="keyword">null</span>) &#123;</div><div class="line">					System.out.println(<span class="string">"--------------------------------------"</span>);</div><div class="line">					System.out.println(<span class="string">"Response content: "</span> + EntityUtils.toString(entity));</div><div class="line">					System.out.println(<span class="string">"--------------------------------------"</span>);</div><div class="line">				&#125;</div><div class="line">			&#125; <span class="keyword">finally</span> &#123;</div><div class="line">				response.close();</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (ClientProtocolException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">catch</span> (UnsupportedEncodingException e1) &#123;</div><div class="line">			e1.printStackTrace();</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="comment">// 关闭连接,释放资源</span></div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				httpclient.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 发送 get请求</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(String url)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">// 创建默认的httpClient实例.</span></div><div class="line">		CloseableHttpClient httpclient = HttpClients.createDefault();</div><div class="line">		</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			<span class="comment">// 封装请求参数</span></div><div class="line">			List&lt;NameValuePair&gt; params = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">			params.add(<span class="keyword">new</span> BasicNameValuePair(<span class="string">"cityEname"</span>, <span class="string">"henan"</span>));</div><div class="line">			<span class="comment">//转换为键值对</span></div><div class="line">			String str = EntityUtils.toString(<span class="keyword">new</span> UrlEncodedFormEntity(params, <span class="string">"UTF-8"</span>));</div><div class="line">			System.out.println(str);</div><div class="line">			<span class="comment">//创建带参数get请求（示例）</span></div><div class="line">			HttpGet httpGet = <span class="keyword">new</span> HttpGet(url+<span class="string">"?"</span>+str);</div><div class="line"></div><div class="line">			<span class="comment">// 创建不带参数get请求</span></div><div class="line">			HttpGet httpget = <span class="keyword">new</span> HttpGet(url);</div><div class="line">			System.out.println(<span class="string">"executing get request "</span> + httpget.getURI());</div><div class="line">			<span class="comment">// 执行get请求.</span></div><div class="line">			CloseableHttpResponse response = httpclient.execute(httpget);</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="comment">// 获取响应实体</span></div><div class="line">				HttpEntity entity = response.getEntity();</div><div class="line">				System.out.println(<span class="string">"--------------------------------------"</span>);</div><div class="line">				<span class="comment">// 打印响应状态</span></div><div class="line">				System.out.println(response.getStatusLine());</div><div class="line">				<span class="keyword">if</span> (entity != <span class="keyword">null</span>) &#123;</div><div class="line">					<span class="comment">// 打印响应内容长度</span></div><div class="line">					System.out.println(<span class="string">"Response content length: "</span> + entity.getContentLength());</div><div class="line">					<span class="comment">// 打印响应内容</span></div><div class="line">					System.out.println(<span class="string">"Response content: "</span> + EntityUtils.toString(entity));</div><div class="line">				&#125;</div><div class="line">				System.out.println(<span class="string">"------------------------------------"</span>);</div><div class="line">			&#125; <span class="keyword">finally</span> &#123;</div><div class="line">				response.close();</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (ClientProtocolException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">catch</span> (ParseException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">finally</span> &#123;</div><div class="line">			<span class="comment">// 关闭连接,释放资源</span></div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				httpclient.close();</div><div class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HttpClient/" rel="tag">#HttpClient</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/微信开发模式接入/" rel="next" title="微信开发模式接入">
+                <i class="fa fa-chevron-left"></i> 微信开发模式接入
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="zproo" />
+          <p class="site-author-name" itemprop="name">zproo</p>
+          <p class="site-description motion-element" itemprop="description">研一、现居沈阳、就读于东北大学计算机专业、javascript、java、程序员。座右铭:今天不想跑，所以才去跑。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zproo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zproo" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、前期准备"><span class="nav-text">一、前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、操作步骤"><span class="nav-text">二、操作步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、代码实例"><span class="nav-text">三、代码实例</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zproo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/zproo/hexo-blog">
+    Next
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'https-zproo-github-io';
+      var disqus_identifier = '2017/HttpClient学习记录/';
+      var disqus_title = "HttpClient学习记录";
+      var disqus_url = 'http://zproo.github.io/2017/HttpClient学习记录/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz", "Gq4sJwz8T6cywiaHlBGFDbE4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
