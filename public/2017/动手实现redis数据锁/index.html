@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,GitHub," />
+  <meta name="keywords" content="Java,redis,Jedis,事务,字段锁," />
 
 
 
@@ -90,19 +90,48 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="description" content="1.问题：
+redis安装使用工作原理，
+操纵方式（使用jedis的 特定语言java下的数据操作方式）
+jedis数据锁实现方式
+为什么要使用redis（为什么要使用redis？）
+
+2.redis安装使用：可以从菜鸟redis教程（主要看下安装配置）快速顺下来 ，然后看最后的java使用。
+3.jedis使用使用Jedis需要的第三方jar包：
+
+jedis-2.9.0.jar
+commons">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://zproo.github.io/2017/hello-world/index.html">
+<meta property="og:title" content="动手实现redis数据锁">
+<meta property="og:url" content="http://zproo.github.io/2017/动手实现redis数据锁/index.html">
 <meta property="og:site_name" content="zproo*">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2017-05-12T04:46:40.224Z">
+<meta property="og:description" content="1.问题：
+redis安装使用工作原理，
+操纵方式（使用jedis的 特定语言java下的数据操作方式）
+jedis数据锁实现方式
+为什么要使用redis（为什么要使用redis？）
+
+2.redis安装使用：可以从菜鸟redis教程（主要看下安装配置）快速顺下来 ，然后看最后的java使用。
+3.jedis使用使用Jedis需要的第三方jar包：
+
+jedis-2.9.0.jar
+commons">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/redis.png">
+<meta property="og:updated_time" content="2017-10-18T02:39:14.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="动手实现redis数据锁">
+<meta name="twitter:description" content="1.问题：
+redis安装使用工作原理，
+操纵方式（使用jedis的 特定语言java下的数据操作方式）
+jedis数据锁实现方式
+为什么要使用redis（为什么要使用redis？）
+
+2.redis安装使用：可以从菜鸟redis教程（主要看下安装配置）快速顺下来 ，然后看最后的java使用。
+3.jedis使用使用Jedis需要的第三方jar包：
+
+jedis-2.9.0.jar
+commons">
+<meta name="twitter:image" content="http://ortur5wom.bkt.clouddn.com/redis.png">
 
 
 
@@ -123,9 +152,9 @@ Quick">
 
 
 
-  <link rel="canonical" href="http://zproo.github.io/2017/hello-world/"/>
+  <link rel="canonical" href="http://zproo.github.io/2017/动手实现redis数据锁/"/>
 
-  <title> Hello World | zproo* </title>
+  <title> 动手实现redis数据锁 | zproo* </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -251,17 +280,23 @@ Quick">
   <div class="post-header">
       <div class="tags">
       
-        <a href="/tags/Hexo/" rel="tag" title="Hexo">Hexo</a>
+        <a href="/tags/Java/" rel="tag" title="Java">Java</a>
       
-        <a href="/tags/GitHub/" rel="tag" title="GitHub">GitHub</a>
+        <a href="/tags/redis/" rel="tag" title="redis">redis</a>
+      
+        <a href="/tags/Jedis/" rel="tag" title="Jedis">Jedis</a>
+      
+        <a href="/tags/事务/" rel="tag" title="事务">事务</a>
+      
+        <a href="/tags/字段锁/" rel="tag" title="字段锁">字段锁</a>
       
       </div>
-      <h1>Hello World</h1>
+      <h1>动手实现redis数据锁</h1>
       <h2 class="subtitle"></h2>
       <div class="post-time">
         <span class="post-meta-item-text">Posted on </span>
-        <time itemprop="dateCreated" datetime="2017-04-02T10:27:15+08:00" content="2017-04-02" title="2017-04-02 10:27:15">
-          2017-04-02
+        <time itemprop="dateCreated" datetime="2017-10-18T10:18:20+08:00" content="2017-10-18" title="2017-10-18 10:18:20">
+          2017-10-18
         </time>
       </div>
   </div>
@@ -296,7 +331,7 @@ Quick">
             
             
               
-                Hello World
+                动手实现redis数据锁
               
             
           </h1>
@@ -308,8 +343,8 @@ Quick">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-04-02T10:27:15+08:00" content="2017-04-02">
-              2017-04-02
+            <time itemprop="dateCreated" datetime="2017-10-18T10:18:20+08:00" content="2017-10-18">
+              2017-10-18
             </time>
           </span>
 
@@ -319,8 +354,8 @@ Quick">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/hello-world/" itemprop="commentsCount"></span>
+                <a href="/2017/动手实现redis数据锁/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/动手实现redis数据锁/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,7 +365,7 @@ Quick">
 
           
           
-             <span id="/2017/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2017/动手实现redis数据锁/" class="leancloud_visitors" data-flag-title="动手实现redis数据锁">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,15 +387,53 @@ Quick">
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="1-问题："><a href="#1-问题：" class="headerlink" title="1.问题："></a>1.问题：</h1><ol>
+<li>redis安装使用工作原理，</li>
+<li>操纵方式（使用jedis的 特定语言java下的数据操作方式）</li>
+<li>jedis数据锁实现方式</li>
+<li>为什么要使用redis（<a href="http://blog.csdn.net/yujin2010good/article/details/54729939" target="_blank" rel="external">为什么要使用redis？</a>）</li>
+</ol>
+<h1 id="2-redis安装使用："><a href="#2-redis安装使用：" class="headerlink" title="2.redis安装使用："></a>2.redis安装使用：</h1><p>可以从菜鸟<a href="http://www.runoob.com/redis/redis-install.html" target="_blank" rel="external">redis教程</a>（主要看下安装配置）快速顺下来 ，然后看最后的java使用。</p>
+<h1 id="3-jedis使用"><a href="#3-jedis使用" class="headerlink" title="3.jedis使用"></a>3.jedis使用</h1><p>使用Jedis需要的第三方jar包：</p>
+<blockquote>
+<p>jedis-2.9.0.jar</p>
+<p>commons-pool2-2.4.2.jar (Jedis包依赖的包 - 抽象的池的管理工具)</p>
+</blockquote>
+<p>简单jedis包类图：（Redis客户端：Jedis）<br>Jedis包类图：<br><img src="http://ortur5wom.bkt.clouddn.com/redis.png" alt="Jedis类图"></p>
+<blockquote>
+<p>Jedis类是整个客户端的入口，通过Jedis可以建立与Redis Server的连接并发送命令。Jedis继承自BinaryJedis，同时Jedis和BinaryJedis都实现了很多接口，通过一张类图来描述：每一个接口都代表了一类Redis命令，例如JedisCommands中包含了SET GET等命令，MultiKeyCommands中包含了针对多个Key的MSET MGET等命令。一部分命令有两个版本的接口，如JedisCommands和BinaryJedisCommands。JedisCommands是字符串参数版本命令，会在Jedis内部将参数转换成UTF-8编码的字节数组。BinaryJedisCommands提供的是字节参数版本，允许用户自己决定编码等细节。ClusterCommands和SentinelCommands与集群、高可用等相关的命令只有一个版本。</p>
+</blockquote>
+<h1 id="4-动手实现redis数据锁"><a href="#4-动手实现redis数据锁" class="headerlink" title="4.动手实现redis数据锁"></a>4.动手实现redis数据锁</h1><p><strong>重要：</strong> <strong><em>（以下所有讨论涉及的代码下载链接，包含封装良好的加锁代码）</em></strong></p>
+<h2 id="4-1redis并发问题"><a href="#4-1redis并发问题" class="headerlink" title="4.1redis并发问题"></a>4.1redis并发问题</h2><p><strong>问题：</strong></p>
+<p>有个键，假设名称为<code>myNum</code>，里面保存的是阿拉伯数字，假设现在值为1，存在多个连接对<code>myNum</code>进行操作的情况，这个时候就会有并发的问题。假设有两个连接<code>linkA</code>和<code>linkB</code>，这两个连接都执行下面的操作，取出<code>myNum</code>的值<code>+1</code>，然后再存回去，看看下面的交互：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">linkA <span class="keyword">get</span> myNum =&gt; <span class="number">1</span></div><div class="line">linkB <span class="keyword">get</span> myNum =&gt; <span class="number">1</span></div><div class="line">linkA <span class="keyword">set</span> muNum =&gt; <span class="number">2</span></div><div class="line">linkB <span class="keyword">set</span> myNum =&gt; <span class="number">2</span></div></pre></td></tr></table></figure>
+<p>执行完操作之后，结果可能是2，这和我们预期的3不一致。</p>
+<h2 id="4-2尝试使用redis事务解决问题："><a href="#4-2尝试使用redis事务解决问题：" class="headerlink" title="4.2尝试使用redis事务解决问题："></a>4.2尝试使用redis事务解决问题：</h2><p>redis中也是有事务的，不过这个事务没有mysql中的完善，只保证了一致性和隔离性，不满足原子性和持久性。</p>
+<p>redis事务使用multi、exec命令 - <a href="http://www.runoob.com/redis/redis-transactions.html" target="_blank" rel="external">菜鸟教程：redis事务的基本操作</a></p>
+<blockquote>
+<p>原子性，redis会将事务中的所有命令执行一遍，哪怕是中间有执行失败也不会回滚。kill信号、宿主机宕机等导致事务执行失败，redis也不会进行重试或者回滚。</p>
+<p>持久性，redis事务的持久性依赖于redis所使用的持久化模式，遗憾的是各种持久化模式也都不是持久化的。</p>
+<p>隔离性，redis是单进程，开启事务之后，会执行完当前连接的所有命令直到遇到exec命令，才处理其他连接的命令</p>
+</blockquote>
+<p>经过代码实验，redis事务解决不了上面的问题。</p>
+<p>当然了redis还有一个watch命令，这个命令可以解决这个问题，看下面的例子，对一个键执行watch，然后执行事务，由于watch的存在，他会监测键a，当a被修该之后，后面的事务就会<strong>执行失败</strong>，这就确保了多个连接同时来了，都监测着a，</p>
+<p><strong>注意：</strong></p>
+<p> 使用watch也只是保证了几个操作不能同时进行，但最终结果是几个并行操作中只有第一个操作执行成功，其他的都执行失败并不再执行。</p>
+<p>即解决了能同时修改的问题，但是却只执行了单个任务，冲突的任务都没有执行。所以说使用redis内置事务解决不了问题，接下来尝试了解redis锁相关内容解决问题。</p>
+<h2 id="4-3为redis中的数据加锁"><a href="#4-3为redis中的数据加锁" class="headerlink" title="4.3为redis中的数据加锁"></a>4.3为redis中的数据加锁</h2><p>上面给出了源码链接，源码中已经将加锁操作进行了封装，可用在生产环境中没有问题。</p>
+<p><strong>核心函数：</strong></p>
+<p>redis中的setnx函数：</p>
+<blockquote>
+<p>官方：Set <code>key</code> to hold string <code>value</code> if <code>key</code> does not exist.</p>
+</blockquote>
+<p>使用<code>SETNX mykey &quot;Hello&quot;</code> ，有两种情况：</p>
+<ol>
+<li>mykey不存在，新建<code>mykey</code>并设为<code>Hello</code>，返回值<code>1</code></li>
+<li>mykey已存在，不做操作，返回值<code>0</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 为“aa”加字段锁</span></div><div class="line">RedisLock lock = <span class="keyword">new</span> RedisLock(<span class="string">"aa"</span>,redisPool);</div><div class="line">lock.lock(<span class="number">10000</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@param</span> timeout 超时时间</div><div class="line"> * <span class="doctag">@param</span> expire  锁的超时时间（秒），过期删除</div><div class="line"> * <span class="doctag">@return</span> 成功或失败标志</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">lock</span><span class="params">(<span class="keyword">long</span> timeout, <span class="keyword">int</span> expire)</span> </span>&#123;</div><div class="line">    <span class="keyword">long</span> nano = System.nanoTime();</div><div class="line">    timeout *= MILLI_NANO_CONVERSION;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">while</span> ((System.nanoTime() - nano) &lt; timeout) &#123;</div><div class="line">          <span class="comment">// 多个并行用户同时请求为字段"aa"加锁，只有一个能够加锁成功</span></div><div class="line">          <span class="comment">// 只允许加锁成功的用户对字段"aa"进行操作，即实现了字段锁的效果 </span></div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.jedis.setnx(<span class="keyword">this</span>.key, LOCKED) == <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.jedis.expire(<span class="keyword">this</span>.key, expire);</div><div class="line">                <span class="keyword">this</span>.locked = <span class="keyword">true</span>;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.locked;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 短暂休眠，避免出现活锁</span></div><div class="line">            Thread.sleep(<span class="number">3</span>, RANDOM.nextInt(<span class="number">500</span>));</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Locking error"</span>, e);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结束。</p>
 
       
     </div>
@@ -384,9 +457,15 @@ Quick">
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
-            <a href="/tags/GitHub/" rel="tag">#GitHub</a>
+            <a href="/tags/redis/" rel="tag">#redis</a>
+          
+            <a href="/tags/Jedis/" rel="tag">#Jedis</a>
+          
+            <a href="/tags/事务/" rel="tag">#事务</a>
+          
+            <a href="/tags/字段锁/" rel="tag">#字段锁</a>
           
         </div>
       
@@ -395,13 +474,13 @@ Quick">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/HttpClient学习记录/" rel="next" title="HttpClient学习记录">
+                <i class="fa fa-chevron-left"></i> HttpClient学习记录
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/从0到有-如何搭建个人博客/" rel="prev" title="从0到有 如何搭建个人博客">
-                从0到有 如何搭建个人博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -541,7 +620,7 @@ Quick">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-问题："><span class="nav-text">1.问题：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-redis安装使用："><span class="nav-text">2.redis安装使用：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-jedis使用"><span class="nav-text">3.jedis使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-动手实现redis数据锁"><span class="nav-text">4.动手实现redis数据锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1redis并发问题"><span class="nav-text">4.1redis并发问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2尝试使用redis事务解决问题："><span class="nav-text">4.2尝试使用redis事务解决问题：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3为redis中的数据加锁"><span class="nav-text">4.3为redis中的数据加锁</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -676,9 +755,9 @@ Quick">
 
     <script type="text/javascript">
       var disqus_shortname = 'https-zproo-github-io';
-      var disqus_identifier = '2017/hello-world/';
-      var disqus_title = "Hello World";
-      var disqus_url = 'http://zproo.github.io/2017/hello-world/';
+      var disqus_identifier = '2017/动手实现redis数据锁/';
+      var disqus_title = "动手实现redis数据锁";
+      var disqus_url = 'http://zproo.github.io/2017/动手实现redis数据锁/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

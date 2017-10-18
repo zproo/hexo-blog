@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://zproo.github.io/2017/%E5%8A%A8%E6%89%8B%E5%AE%9E%E7%8E%B0redis%E6%95%B0%E6%8D%AE%E9%94%81/</loc>
+    <lastmod>2017-10-18T02:39:14.840Z</lastmod>
+    <data>
+        <display>
+        <title>动手实现redis数据锁</title>
+        <pubTime>2017-10-18T02:18:20.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>redis</tag>
+         
+        <tag>Jedis</tag>
+         
+        <tag>事务</tag>
+         
+        <tag>字段锁</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://zproo.github.io/2017/HttpClient%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2017-10-14T08:57:20.282Z</lastmod>
     <data>
@@ -97,11 +122,11 @@
         <title>从0到有 如何搭建个人博客</title>
         <pubTime>2017-04-04T12:57:25.000Z</pubTime>
         
-        <tag>Git</tag>
-         
         <tag>Hexo</tag>
          
         <tag>GitHub</tag>
+         
+        <tag>Git</tag>
          
          
            
