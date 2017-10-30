@@ -117,7 +117,7 @@ jedis数据锁实现方式
 jedis-2.9.0.jar
 commons">
 <meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/redis.png">
-<meta property="og:updated_time" content="2017-10-18T02:39:14.840Z">
+<meta property="og:updated_time" content="2017-10-30T07:32:18.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动手实现redis数据锁">
 <meta name="twitter:description" content="1.问题：
@@ -406,7 +406,7 @@ commons">
 <h1 id="4-动手实现redis数据锁"><a href="#4-动手实现redis数据锁" class="headerlink" title="4.动手实现redis数据锁"></a>4.动手实现redis数据锁</h1><p><strong>重要：</strong> <strong><em>（以下所有讨论涉及的代码下载链接，包含封装良好的加锁代码）</em></strong></p>
 <h2 id="4-1redis并发问题"><a href="#4-1redis并发问题" class="headerlink" title="4.1redis并发问题"></a>4.1redis并发问题</h2><p><strong>问题：</strong></p>
 <p>有个键，假设名称为<code>myNum</code>，里面保存的是阿拉伯数字，假设现在值为1，存在多个连接对<code>myNum</code>进行操作的情况，这个时候就会有并发的问题。假设有两个连接<code>linkA</code>和<code>linkB</code>，这两个连接都执行下面的操作，取出<code>myNum</code>的值<code>+1</code>，然后再存回去，看看下面的交互：</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">linkA <span class="keyword">get</span> myNum =&gt; <span class="number">1</span></div><div class="line">linkB <span class="keyword">get</span> myNum =&gt; <span class="number">1</span></div><div class="line">linkA <span class="keyword">set</span> muNum =&gt; <span class="number">2</span></div><div class="line">linkB <span class="keyword">set</span> myNum =&gt; <span class="number">2</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">linkA get myNum =&gt; 1</div><div class="line">linkB get myNum =&gt; 1</div><div class="line">linkA set muNum =&gt; 2</div><div class="line">linkB set myNum =&gt; 2</div></pre></td></tr></table></figure>
 <p>执行完操作之后，结果可能是2，这和我们预期的3不一致。</p>
 <h2 id="4-2尝试使用redis事务解决问题："><a href="#4-2尝试使用redis事务解决问题：" class="headerlink" title="4.2尝试使用redis事务解决问题："></a>4.2尝试使用redis事务解决问题：</h2><p>redis中也是有事务的，不过这个事务没有mysql中的完善，只保证了一致性和隔离性，不满足原子性和持久性。</p>
 <p>redis事务使用multi、exec命令 - <a href="http://www.runoob.com/redis/redis-transactions.html" target="_blank" rel="external">菜鸟教程：redis事务的基本操作</a></p>
@@ -482,6 +482,10 @@ commons">
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/java多线程编程（一）/" rel="prev" title="java多线程编程（一）">
+                java多线程编程（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -555,7 +559,7 @@ commons">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -565,7 +569,7 @@ commons">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

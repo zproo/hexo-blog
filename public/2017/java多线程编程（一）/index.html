@@ -1,0 +1,888 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,多线程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1. 线程与进程
+线程：进程中负责程序执行的执行单元。线程本身依靠程序进行运行，线程是程序中的顺序控制流，只能使用分配给程序的资源和环境
+进程：执行中的程序，一个进程至少包含一个线程
+单线程：程序中只存在一个线程，实际上主方法就是一个主线程
+多线程：在一个程序中运行多个任务，目的是更好地使用CPU资源
+
+2. 一个线程的生命周期
+
+创建（new）状态: 准备好了一个多线程的对象
+就绪（runnab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程编程（一）">
+<meta property="og:url" content="http://zproo.github.io/2017/java多线程编程（一）/index.html">
+<meta property="og:site_name" content="zproo*">
+<meta property="og:description" content="1. 线程与进程
+线程：进程中负责程序执行的执行单元。线程本身依靠程序进行运行，线程是程序中的顺序控制流，只能使用分配给程序的资源和环境
+进程：执行中的程序，一个进程至少包含一个线程
+单线程：程序中只存在一个线程，实际上主方法就是一个主线程
+多线程：在一个程序中运行多个任务，目的是更好地使用CPU资源
+
+2. 一个线程的生命周期
+
+创建（new）状态: 准备好了一个多线程的对象
+就绪（runnab">
+<meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2014/01/java-thread.jpg">
+<meta property="og:updated_time" content="2017-10-30T07:42:49.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java多线程编程（一）">
+<meta name="twitter:description" content="1. 线程与进程
+线程：进程中负责程序执行的执行单元。线程本身依靠程序进行运行，线程是程序中的顺序控制流，只能使用分配给程序的资源和环境
+进程：执行中的程序，一个进程至少包含一个线程
+单线程：程序中只存在一个线程，实际上主方法就是一个主线程
+多线程：在一个程序中运行多个任务，目的是更好地使用CPU资源
+
+2. 一个线程的生命周期
+
+创建（new）状态: 准备好了一个多线程的对象
+就绪（runnab">
+<meta name="twitter:image" content="http://www.runoob.com/wp-content/uploads/2014/01/java-thread.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zproo.github.io/2017/java多线程编程（一）/"/>
+
+  <title> java多线程编程（一） | zproo* </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('http://ortur5wom.bkt.clouddn.com/home_bg.jpg');">
+      <div class="header-inner-post"><a class="site-home" href="/">zproo*</a>
+
+<div class="site-meta custom-logo">
+  
+  
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/logo.png" style="width: 50px"
+             alt="zproo*"/>
+      </a>
+    </div>
+  
+
+  
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+           <li class="menu-item menu-item-about">
+             <a href="/about" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+               
+               
+               about
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-tags">
+             <a href="/tags" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+               
+               
+               tags
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-archives">
+             <a href="/archives" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+               
+               
+               archives
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-project">
+             <a href="https://zproo.github.io/showcase/project/" rel="section" target="_blank">
+               
+                 <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+               
+               
+               project
+             </a>
+           </li>
+        
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+      <div class="header-post"> 
+  <div class="post-header">
+      <div class="tags">
+      
+        <a href="/tags/Java/" rel="tag" title="Java">Java</a>
+      
+        <a href="/tags/多线程/" rel="tag" title="多线程">多线程</a>
+      
+      </div>
+      <h1>java多线程编程（一）</h1>
+      <h2 class="subtitle"></h2>
+      <div class="post-time">
+        <span class="post-meta-item-text">Posted on </span>
+        <time itemprop="dateCreated" datetime="2017-10-30T15:39:10+08:00" content="2017-10-30" title="2017-10-30 15:39:10">
+          2017-10-30
+        </time>
+      </div>
+  </div>
+ </div>
+    </header>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java多线程编程（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-10-30T15:39:10+08:00" content="2017-10-30">
+              2017-10-30
+            </time>
+          </span>
+
+          
+
+          <!-- 
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/java多线程编程（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/java多线程编程（一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+           -->
+
+          
+
+          
+          
+             <span id="/2017/java多线程编程（一）/" class="leancloud_visitors" data-flag-title="java多线程编程（一）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-线程与进程"><a href="#1-线程与进程" class="headerlink" title="1. 线程与进程"></a>1. 线程与进程</h1><ol>
+<li>线程：进程中负责程序执行的执行单元。线程本身依靠程序进行运行，线程是程序中的顺序控制流，只能使用分配给程序的资源和环境</li>
+<li>进程：执行中的程序，一个进程至少包含一个线程</li>
+<li>单线程：程序中只存在一个线程，实际上主方法就是一个主线程</li>
+<li>多线程：在一个程序中运行多个任务，目的是更好地使用CPU资源</li>
+</ol>
+<h1 id="2-一个线程的生命周期"><a href="#2-一个线程的生命周期" class="headerlink" title="2. 一个线程的生命周期"></a>2. 一个线程的生命周期</h1><p><img src="http://www.runoob.com/wp-content/uploads/2014/01/java-thread.jpg" alt="线程的生命周期图"></p>
+<ul>
+<li>创建（new）状态: 准备好了一个多线程的对象</li>
+<li>就绪（runnable）状态: 调用了<code>start()</code>方法, 等待CPU进行调度</li>
+<li>运行（running）状态: 如果就绪状态的线程获取 CPU 资源，就可以执行<code>run()</code>方法</li>
+<li>阻塞（blocked）状态: 暂时停止执行, 可能将资源交给其它线程使用。如果一个线程执行了sleep（睡眠）、suspend（挂起）等方法，失去所占用资源之后，该线程就从运行状态进入阻塞状态。</li>
+<li>终止（dead）状态: 线程销毁</li>
+</ul>
+<h1 id="3-线程的实现"><a href="#3-线程的实现" class="headerlink" title="3. 线程的实现"></a>3. 线程的实现</h1><p>创建线程有两种主要的方式：</p>
+<ul>
+<li>通过实现 Runnable 接口；（推荐）</li>
+<li>通过继承 Thread 类本身；</li>
+</ul>
+<h2 id="3-1-通过实现Runnable接口来创建线程"><a href="#3-1-通过实现Runnable接口来创建线程" class="headerlink" title="3.1 通过实现Runnable接口来创建线程"></a>3.1 通过实现Runnable接口来创建线程</h2><p>实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        RunnableDemo R1 = <span class="keyword">new</span> RunnableDemo( <span class="string">"Thread-1"</span>);</div><div class="line">        Thread t1 = <span class="keyword">new</span> Thread(R1);</div><div class="line">        t1.start();</div><div class="line"></div><div class="line">        RunnableDemo R2 = <span class="keyword">new</span> RunnableDemo( <span class="string">"Thread-2"</span>);</div><div class="line">        Thread t2 = <span class="keyword">new</span> Thread(R2);</div><div class="line">        t2.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RunnableDemo</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String threadName;</div><div class="line"></div><div class="line">    RunnableDemo( String name) &#123;</div><div class="line">        threadName = name;</div><div class="line">        System.out.println(<span class="string">"Creating "</span> +  threadName );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Running "</span> +  threadName );</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">                System.out.println(<span class="string">"Thread: "</span> + threadName + <span class="string">", "</span> + i);</div><div class="line">                <span class="comment">// 让线程睡眠一会</span></div><div class="line">                Thread.sleep(<span class="number">50</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            System.out.println(<span class="string">"Thread "</span> +  threadName + <span class="string">" interrupted."</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"Thread "</span> +  threadName + <span class="string">" exiting."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Creating Thread-1</div><div class="line">Creating Thread-2</div><div class="line">Running Thread-2</div><div class="line">Thread: Thread-2, 4</div><div class="line">Running Thread-1</div><div class="line">Thread: Thread-1, 4</div><div class="line">Thread: Thread-1, 3</div><div class="line">Thread: Thread-2, 3</div><div class="line">Thread: Thread-2, 2</div><div class="line">Thread: Thread-1, 2</div><div class="line">Thread: Thread-1, 1</div><div class="line">Thread: Thread-2, 1</div><div class="line">Thread Thread-2 exiting.</div><div class="line">Thread Thread-1 exiting.</div></pre></td></tr></table></figure>
+<h2 id="3-2-通过继承Thread来创建线程"><a href="#3-2-通过继承Thread来创建线程" class="headerlink" title="3.2 通过继承Thread来创建线程"></a>3.2 通过继承Thread来创建线程</h2><p>实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">        ThreadDemo T1 = <span class="keyword">new</span> ThreadDemo( <span class="string">"Thread-1"</span>);</div><div class="line">        T1.start();</div><div class="line"></div><div class="line">        ThreadDemo T2 = <span class="keyword">new</span> ThreadDemo( <span class="string">"Thread-2"</span>);</div><div class="line">        T2.start();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadDemo</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String threadName;</div><div class="line"></div><div class="line">    ThreadDemo( String name) &#123;</div><div class="line">        threadName = name;</div><div class="line">        System.out.println(<span class="string">"Creating "</span> +  threadName );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Running "</span> +  threadName );</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">4</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">                System.out.println(<span class="string">"Thread: "</span> + threadName + <span class="string">", "</span> + i);</div><div class="line">                <span class="comment">// 让线程睡醒一会</span></div><div class="line">                Thread.sleep(<span class="number">50</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;<span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            System.out.println(<span class="string">"Thread "</span> +  threadName + <span class="string">" interrupted."</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println(<span class="string">"Thread "</span> +  threadName + <span class="string">" exiting."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Creating Thread-1</div><div class="line">Creating Thread-2</div><div class="line">Running Thread-1</div><div class="line">Thread: Thread-1, 4</div><div class="line">Running Thread-2</div><div class="line">Thread: Thread-2, 4</div><div class="line">Thread: Thread-1, 3</div><div class="line">Thread: Thread-2, 3</div><div class="line">Thread: Thread-2, 2</div><div class="line">Thread: Thread-1, 2</div><div class="line">Thread: Thread-2, 1</div><div class="line">Thread: Thread-1, 1</div><div class="line">Thread Thread-2 exiting.</div><div class="line">Thread Thread-1 exiting.</div></pre></td></tr></table></figure>
+<h2 id="3-3-为什么推荐使用Runnable接口的方式"><a href="#3-3-为什么推荐使用Runnable接口的方式" class="headerlink" title="3.3 为什么推荐使用Runnable接口的方式"></a>3.3 为什么推荐使用Runnable接口的方式</h2><p>Runnable接口和Thread之间的联系：</p>
+<p><code>public class Thread extends Object implements Runnable</code></p>
+<p>我们发现Thread类其实也是Runnable接口的子类。</p>
+<p>在程序开发中只要是多线程都以实现Runnable接口为主，因为实现Runnable接口相比继承Thread类有如下好处：</p>
+<ul>
+<li>避免点继承的局限，一个类可以继承多个接口。</li>
+<li>适合于资源的共享</li>
+</ul>
+<h1 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h1><ul>
+<li><a href="https://www.ibm.com/developerworks/cn/java/j-concurrent/" target="_blank" rel="external">Java 多线程与并发编程专题</a></li>
+<li><a href="http://www.importnew.com/21136.html" target="_blank" rel="external">Java多线程干货系列（1）：Java多线程基础</a></li>
+<li><a href="http://www.runoob.com/java/java-multithreading.html" target="_blank" rel="external">菜鸟教程：Java多线程编程</a></li>
+<li><a href="http://developer.51cto.com/art/201203/321042.htm" target="_blank" rel="external">Java中Runnable和Thread的区别</a></li>
+</ul>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/多线程/" rel="tag">#多线程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/动手实现redis数据锁/" rel="next" title="动手实现redis数据锁">
+                <i class="fa fa-chevron-left"></i> 动手实现redis数据锁
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/java多线程编程（二）：CountDownLatch/" rel="prev" title="java多线程编程（二）：CountDownLatch">
+                java多线程编程（二）：CountDownLatch <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="zproo" />
+          <p class="site-author-name" itemprop="name">zproo</p>
+          <p class="site-description motion-element" itemprop="description">研一、现居沈阳、就读于东北大学计算机专业、javascript、java、程序员。座右铭:今天不想跑，所以才去跑。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zproo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zproo" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-线程与进程"><span class="nav-text">1. 线程与进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-一个线程的生命周期"><span class="nav-text">2. 一个线程的生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-线程的实现"><span class="nav-text">3. 线程的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-通过实现Runnable接口来创建线程"><span class="nav-text">3.1 通过实现Runnable接口来创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-通过继承Thread来创建线程"><span class="nav-text">3.2 通过继承Thread来创建线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-为什么推荐使用Runnable接口的方式"><span class="nav-text">3.3 为什么推荐使用Runnable接口的方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献："><span class="nav-text">参考文献：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zproo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/zproo/hexo-blog">
+    Next
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'https-zproo-github-io';
+      var disqus_identifier = '2017/java多线程编程（一）/';
+      var disqus_title = "java多线程编程（一）";
+      var disqus_url = 'http://zproo.github.io/2017/java多线程编程（一）/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz", "Gq4sJwz8T6cywiaHlBGFDbE4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
