@@ -1,0 +1,914 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,浮点数计算精度,Javascript,BigDecimal," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Double类型计算丢失精度问题解决说明
+
+本文档里使用的方法只试用于常见项目出现的浮点数据类型计算丢失精度问题
+在计算时还好考虑 所用计算机语言支持的 各类型数字的最大值与最小值
+
+1. Java场景1.1 问题重现1234567System.out.println(&quot;0.05 + 0.01 = &quot; + (0.05 + 0.01));  输出：0.060000000000000005System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算丢失精度解决方法">
+<meta property="og:url" content="http://zproo.github.io/2017/计算丢失精度解决方法/index.html">
+<meta property="og:site_name" content="zproo*">
+<meta property="og:description" content="Double类型计算丢失精度问题解决说明
+
+本文档里使用的方法只试用于常见项目出现的浮点数据类型计算丢失精度问题
+在计算时还好考虑 所用计算机语言支持的 各类型数字的最大值与最小值
+
+1. Java场景1.1 问题重现1234567System.out.println(&quot;0.05 + 0.01 = &quot; + (0.05 + 0.01));  输出：0.060000000000000005System">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A61.png">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A62.png">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A63.png">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A64.png">
+<meta property="og:image" content="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A65.png">
+<meta property="og:updated_time" content="2017-11-08T06:52:25.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算丢失精度解决方法">
+<meta name="twitter:description" content="Double类型计算丢失精度问题解决说明
+
+本文档里使用的方法只试用于常见项目出现的浮点数据类型计算丢失精度问题
+在计算时还好考虑 所用计算机语言支持的 各类型数字的最大值与最小值
+
+1. Java场景1.1 问题重现1234567System.out.println(&quot;0.05 + 0.01 = &quot; + (0.05 + 0.01));  输出：0.060000000000000005System">
+<meta name="twitter:image" content="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A61.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zproo.github.io/2017/计算丢失精度解决方法/"/>
+
+  <title> 计算丢失精度解决方法 | zproo* </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    
+    <header id="header_post" class="header" itemscope itemtype="http://schema.org/WPHeader" style="background-image: url('http://ortur5wom.bkt.clouddn.com/home_bg.jpg');">
+      <div class="header-inner-post"><a class="site-home" href="/">zproo*</a>
+
+<div class="site-meta custom-logo">
+  
+  
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/images/logo.png" style="width: 50px"
+             alt="zproo*"/>
+      </a>
+    </div>
+  
+
+  
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+           <li class="menu-item menu-item-about">
+             <a href="/about" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+               
+               
+               about
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-tags">
+             <a href="/tags" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+               
+               
+               tags
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-archives">
+             <a href="/archives" rel="section">
+               
+                 <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+               
+               
+               archives
+             </a>
+           </li>
+        
+      
+        
+        
+        
+           <li class="menu-item menu-item-project">
+             <a href="https://zproo.github.io/showcase/project/" rel="section" target="_blank">
+               
+                 <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+               
+               
+               project
+             </a>
+           </li>
+        
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+      <div class="header-post"> 
+  <div class="post-header">
+      <div class="tags">
+      
+        <a href="/tags/Java/" rel="tag" title="Java">Java</a>
+      
+        <a href="/tags/浮点数计算精度/" rel="tag" title="浮点数计算精度">浮点数计算精度</a>
+      
+        <a href="/tags/Javascript/" rel="tag" title="Javascript">Javascript</a>
+      
+        <a href="/tags/BigDecimal/" rel="tag" title="BigDecimal">BigDecimal</a>
+      
+      </div>
+      <h1>计算丢失精度解决方法</h1>
+      <h2 class="subtitle"></h2>
+      <div class="post-time">
+        <span class="post-meta-item-text">Posted on </span>
+        <time itemprop="dateCreated" datetime="2017-11-08T14:44:05+08:00" content="2017-11-08" title="2017-11-08 14:44:05">
+          2017-11-08
+        </time>
+      </div>
+  </div>
+ </div>
+    </header>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                计算丢失精度解决方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-11-08T14:44:05+08:00" content="2017-11-08">
+              2017-11-08
+            </time>
+          </span>
+
+          
+
+          <!-- 
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/计算丢失精度解决方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/计算丢失精度解决方法/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+           -->
+
+          
+
+          
+          
+             <span id="/2017/计算丢失精度解决方法/" class="leancloud_visitors" data-flag-title="计算丢失精度解决方法">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">visitors </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Double类型计算丢失精度问题解决"><a href="#Double类型计算丢失精度问题解决" class="headerlink" title="Double类型计算丢失精度问题解决"></a>Double类型计算丢失精度问题解决</h1><p><strong>说明</strong></p>
+<ol>
+<li>本文档里使用的方法只试用于常见项目出现的浮点数据类型计算丢失精度问题</li>
+<li>在计算时还好考虑 所用计算机语言支持的 各类型数字的最大值与最小值</li>
+</ol>
+<h1 id="1-Java场景"><a href="#1-Java场景" class="headerlink" title="1. Java场景"></a>1. Java场景</h1><h2 id="1-1-问题重现"><a href="#1-1-问题重现" class="headerlink" title="1.1 问题重现"></a>1.1 问题重现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"0.05 + 0.01 = "</span> + (<span class="number">0.05</span> + <span class="number">0.01</span>));  输出：<span class="number">0.060000000000000005</span></div><div class="line"></div><div class="line">System.out.println(<span class="string">"1.0 - 0.42 = "</span> + (<span class="number">1.0</span> - <span class="number">0.42</span>));    输出：<span class="number">0.5800000000000001</span></div><div class="line"></div><div class="line">System.out.println(<span class="string">"4.015 * 100 = "</span> + (<span class="number">4.015</span> * <span class="number">100</span>));  输出：<span class="number">401.49999999999994</span></div><div class="line"></div><div class="line">System.out.println(<span class="string">"123.3 / 100 = "</span> + (<span class="number">123.3</span> / <span class="number">100</span>));  输出：<span class="number">1.2329999999999999</span></div></pre></td></tr></table></figure>
+<h2 id="1-2-解决思路"><a href="#1-2-解决思路" class="headerlink" title="1.2 解决思路"></a>1.2 解决思路</h2><ol>
+<li>需要调用java.math.BigDecimal 类</li>
+<li>把double类型转换为BigDecimal 类型<br><code>BigDecimal bigDecimal = new BigDecimal(Double.toString());</code></li>
+<li><p>通过BigDecimal中的加、减、乘、除 的方法进行计算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bigDecimal1.add(bigDecimal2)         //加</div><div class="line">bigDecimal1.subtract(bigDecimal2)    //减</div><div class="line">bigDecimal1.multiply(bigDecimal2)    //乘</div><div class="line">bigDecimal1.divide(bigDecimal2)      //除</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<h2 id="1-3-封装相关方法"><a href="#1-3-封装相关方法" class="headerlink" title="1.3 封装相关方法"></a>1.3 封装相关方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//加</span></div><div class="line"><span class="function"><span class="keyword">public</span>  Double <span class="title">add</span><span class="params">(Double v1,Double v2)</span></span>&#123;</div><div class="line">     BigDecimal b1 = <span class="keyword">new</span> BigDecimal(v1.toString());</div><div class="line">     BigDecimal b2 = <span class="keyword">new</span> BigDecimal(v2.toString());</div><div class="line">     <span class="keyword">return</span> (b1.add(b2)).doubleValue();</div><div class="line">&#125;</div><div class="line"><span class="comment">//减</span></div><div class="line"><span class="function"><span class="keyword">public</span>  Double <span class="title">sub</span><span class="params">(Double v1,Double v2)</span></span>&#123;</div><div class="line">     BigDecimal b1 = <span class="keyword">new</span> BigDecimal(v1.toString());</div><div class="line">     BigDecimal b2 = <span class="keyword">new</span> BigDecimal(v2.toString());</div><div class="line">     <span class="keyword">return</span> (b1.subtract(b2)).doubleValue();</div><div class="line">&#125;</div><div class="line"><span class="comment">//乘</span></div><div class="line"><span class="function"><span class="keyword">public</span>  Double <span class="title">mul</span><span class="params">(Double v1,Double v2)</span></span>&#123;</div><div class="line">     BigDecimal b1 = <span class="keyword">new</span> BigDecimal(v1.toString());</div><div class="line">     BigDecimal b2 = <span class="keyword">new</span> BigDecimal(v2.toString());</div><div class="line">     <span class="keyword">return</span> (b1.multiply(b2)).doubleValue();</div><div class="line">&#125;</div><div class="line"><span class="comment">//除</span></div><div class="line"><span class="function"><span class="keyword">public</span>  Double <span class="title">div</span><span class="params">(Double v1,Double v2)</span></span>&#123;</div><div class="line">     BigDecimal b1 = <span class="keyword">new</span> BigDecimal(v1.toString());</div><div class="line">     BigDecimal b2 = <span class="keyword">new</span> BigDecimal(v2.toString());</div><div class="line">     <span class="keyword">return</span> (b1.divide(b2)).doubleValue();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="1-4-测试"><a href="#1-4-测试" class="headerlink" title="1.4 测试"></a>1.4 测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"0.05 + 0.01 = "</span> + BigDecimalUtil.add(<span class="number">0.05</span>, <span class="number">0.01</span>));     输出：<span class="number">0.06</span></div><div class="line">System.out.println(<span class="string">"1.0 - 0.42 = "</span> + BigDecimalUtil.sub(<span class="number">1.0</span>, <span class="number">0.42</span>));        输出：<span class="number">0.58</span></div><div class="line">System.out.println(<span class="string">"4.015 * 100 = "</span> + BigDecimalUtil.mul(<span class="number">4.015</span> ,<span class="number">100.00</span>));  输出：<span class="number">401.5</span></div><div class="line">System.out.println(<span class="string">"123.3 / 100 = "</span> + BigDecimalUtil.div(<span class="number">123.3</span>, <span class="number">100.00</span>));   输出：<span class="number">41.07</span></div></pre></td></tr></table></figure>
+<h3 id="1-4-1-异常处理"><a href="#1-4-1-异常处理" class="headerlink" title="1.4.1 异常处理"></a>1.4.1 异常处理</h3><p>如果除不尽会报下面异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"123.2 / 3 = "</span> + r.div(<span class="number">123.2</span>, <span class="number">3.0</span>));</div><div class="line">结果：</div><div class="line">Exception in thread <span class="string">"main"</span> java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.</div><div class="line">    at java.math.BigDecimal.divide(Unknown Source)</div></pre></td></tr></table></figure>
+<p>处理方法：四舍五入保留两位小数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//除法改造四舍五入,保留2位小数</span></div><div class="line"><span class="function"><span class="keyword">public</span>  Double <span class="title">div2</span><span class="params">(Double v1,Double v2)</span></span>&#123;</div><div class="line">     BigDecimal b1 = <span class="keyword">new</span> BigDecimal(v1.toString());</div><div class="line">     BigDecimal b2 = <span class="keyword">new</span> BigDecimal(v2.toString());</div><div class="line">     <span class="keyword">return</span> (b1.divide(b2,<span class="number">2</span>,BigDecimal.ROUND_HALF_UP)).doubleValue();<span class="comment">//四舍五入,保留2位小数</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"123.2 / 3 = "</span> + BigDecimalUtil .div2(<span class="number">123.2</span>, <span class="number">3.0</span>)); 输出：<span class="number">41.07</span></div></pre></td></tr></table></figure>
+<h1 id="2-数据库场景"><a href="#2-数据库场景" class="headerlink" title="2. 数据库场景"></a>2. 数据库场景</h1><h2 id="2-1-问题重现"><a href="#2-1-问题重现" class="headerlink" title="2.1 问题重现"></a>2.1 问题重现</h2><p>表结构（表明doubleTab)：</p>
+<p><img src="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A61.png" alt="浮点数精度1"></p>
+<p>表数据：</p>
+<p><img src="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A62.png" alt="浮点数精度1"></p>
+<p>问题展示：</p>
+<ol>
+<li>查询sql：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">SELECT double1,&apos;加&apos; as arithmetic,double2,(d.double1 + d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 1</div><div class="line">UNION</div><div class="line">SELECT double1,&apos;减&apos; as arithmetic,double2,(d.double1 - d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 2</div><div class="line">UNION</div><div class="line">SELECT double1,&apos;乘&apos; as arithmetic,double2,(d.double1 * d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 3</div><div class="line">UNION</div><div class="line">SELECT double1,&apos;除&apos; as arithmetic,double2,(d.double1 / d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 4</div></pre></td></tr></table></figure>
+<ol>
+<li>结果：</li>
+</ol>
+<p><img src="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A63.png" alt="浮点数精度1"></p>
+<h2 id="2-2-解决思路"><a href="#2-2-解决思路" class="headerlink" title="2.2 解决思路"></a>2.2 解决思路</h2><p>用decimal 类型替换表结构中的 double类型</p>
+<p><img src="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A64.png" alt="浮点数精度1"></p>
+<h2 id="2-3-结果展示"><a href="#2-3-结果展示" class="headerlink" title="2.3 结果展示"></a>2.3 结果展示</h2><ol>
+<li>查询sql</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">SELECT double1,&apos;加&apos; as arithmetic,double2,(d.double1 + d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 1</div><div class="line">UNION</div><div class="line">SELECT double1,&apos;减&apos; as arithmetic,double2,(d.double1 - d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 2</div><div class="line">UNION</div><div class="line">SELECT double1,&apos;乘&apos; as arithmetic,double2,(d.double1 * d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 3</div><div class="line">UNION</div><div class="line">SELECT double1,&apos;除&apos; as arithmetic,double2,(d.double1 / d.double2) as result </div><div class="line">from doubleTab d WHERE d.id = 4</div></pre></td></tr></table></figure>
+<ol>
+<li>结果</li>
+</ol>
+<p><img src="http://ortur5wom.bkt.clouddn.com/image/GithubBlog/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A65.png" alt="浮点数精度1"></p>
+<h1 id="3-Javascript场景"><a href="#3-Javascript场景" class="headerlink" title="3. Javascript场景"></a>3. Javascript场景</h1><h2 id="3-1-问题重现"><a href="#3-1-问题重现" class="headerlink" title="3.1 问题重现"></a>3.1 问题重现</h2><p>页面代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>;</div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">'#add'</span>).text(<span class="number">0.05</span> + <span class="number">0.01</span>)</div><div class="line">    $(<span class="string">'#sub'</span>).text(<span class="number">1.0</span> - <span class="number">0.42</span>)</div><div class="line">    $(<span class="string">'#mul'</span>).text(<span class="number">4.015</span> * <span class="number">100</span>)</div><div class="line">    $(<span class="string">'#div'</span>).text(<span class="number">123.3</span> / <span class="number">100</span>)</div><div class="line">&#125;)</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> &gt;</span>0.05 + 0.01 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"add"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> &gt;</span>1.0 - 0.42 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"sub"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> &gt;</span>4.015 * 100 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"mul"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> &gt;</span>123.3 / 100 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"div"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>页面显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">0.05 + 0.01 = 0.060000000000000005</div><div class="line">1.0 - 0.42 = 0.5800000000000001</div><div class="line">4.015 * 100 = 401.49999999999994</div><div class="line">123.3 / 100 = 1.2329999999999999</div></pre></td></tr></table></figure>
+<h2 id="3-2-解决思路"><a href="#3-2-解决思路" class="headerlink" title="3.2 解决思路"></a>3.2 解决思路</h2><ol>
+<li><p>对于乘法与除法</p>
+<p>算出两个参数一共有几位小数，把两个参数的小数点去掉进行 乘法或除法运算 结果再除以10的参数小数点后面位数和次幂</p>
+</li>
+<li><p>对于加法与减法</p>
+<p>算出两个参数一共有几位小数，把两个参数分别用写好的乘法运算 乘以10的参数小数点后面位数和次幂，然后在把两个参数进行激发或减法运算，结果再除以10的参数小数点后面位数和次幂</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//加法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>,s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">             m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">             m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">  arg1 = mul(arg1,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">  arg2 = mul(arg2,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">  </div><div class="line">    <span class="keyword">return</span> (arg1 + arg2) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="comment">//减法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>, s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">    arg1 = mul(arg1,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">  arg2 = mul(arg2,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">    <span class="keyword">return</span> (arg1 - arg2) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="comment">//乘法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mul</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>, s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(s1.replace(<span class="string">"."</span>, <span class="string">""</span>)) * <span class="built_in">Number</span>(s2.replace(<span class="string">"."</span>, <span class="string">""</span>)) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="comment">//除法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">div</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>, s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(s1.replace(<span class="string">"."</span>, <span class="string">""</span>)) /<span class="built_in">Number</span>(s2.replace(<span class="string">"."</span>, <span class="string">""</span>)) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-3-结果展示"><a href="#3-3-结果展示" class="headerlink" title="3.3 结果展示"></a>3.3 结果展示</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>;</div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">         $(<span class="string">'#add'</span>).text(add(<span class="number">0.05</span>,<span class="number">0.01</span>))</div><div class="line">         $(<span class="string">'#sub'</span>).text(sub(<span class="number">1.0</span>,<span class="number">0.42</span>))</div><div class="line">         $(<span class="string">'#mul'</span>).text(mul(<span class="number">4.015</span> ,<span class="number">100</span>))</div><div class="line">         $(<span class="string">'#div'</span>).text(div(<span class="number">123.3</span>,<span class="number">100</span>))</div><div class="line">&#125;)</div><div class="line"><span class="comment">//加法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>,s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">          m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">          m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">         arg1 = mul(arg1,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">         arg2 = mul(arg2,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">  </div><div class="line">    <span class="keyword">return</span> (arg1 + arg2) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="comment">//减法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sub</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>, s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">    arg1 = mul(arg1,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">         arg2 = mul(arg2,<span class="built_in">Math</span>.pow(<span class="number">10</span>, m))</div><div class="line">    <span class="keyword">return</span> (arg1 - arg2) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="comment">//乘法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">mul</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>, s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(s1.replace(<span class="string">"."</span>, <span class="string">""</span>)) * <span class="built_in">Number</span>(s2.replace(<span class="string">"."</span>, <span class="string">""</span>)) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="comment">//除法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">div</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> m = <span class="number">0</span>, s1 = arg1.toString(), s2 = arg2.toString();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s1.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        m += s2.split(<span class="string">"."</span>)[<span class="number">1</span>].length;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span> (e) &#123;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(s1.replace(<span class="string">"."</span>, <span class="string">""</span>)) /<span class="built_in">Number</span>(s2.replace(<span class="string">"."</span>, <span class="string">""</span>)) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m);</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">p</span> &gt;</span>0.05 + 0.01 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"add"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">p</span> &gt;</span>1.0 - 0.42 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"sub"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">p</span> &gt;</span>4.015 * 100 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"mul"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">p</span> &gt;</span>123.3 / 100 = <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"div"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>页面显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">0.05 + 0.01 = 0.06</div><div class="line">1.0 - 0.42 = 0.58</div><div class="line">4.015 * 100 = 401.5</div><div class="line">123.3 / 100 = 1.233</div></pre></td></tr></table></figure>
+<h1 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h1><ul>
+<li><p><a href="http://blog.csdn.net/jackiehff/article/details/8582449" target="_blank" rel="external">Java BigDecimal详解</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/chenssy/archive/2012/09/09/2677279.html" target="_blank" rel="external">使用BigDecimal进行精确运算</a></p>
+</li>
+<li><p><a href="http://blog.sina.com.cn/s/blog_025270e90101a24l.html" target="_blank" rel="external">javascript小数相减会出现一长串的小数位数的原因(javascript的bug)</a></p>
+</li>
+<li><p><a href="http://madscript.com/javascript/javscript-float-number-compute-problem/" target="_blank" rel="external">Javascript 浮点运算问题分析与解决</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/浮点数计算精度/" rel="tag">#浮点数计算精度</a>
+          
+            <a href="/tags/Javascript/" rel="tag">#Javascript</a>
+          
+            <a href="/tags/BigDecimal/" rel="tag">#BigDecimal</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/java多线程编程（二）：CountDownLatch/" rel="next" title="java多线程编程（二）：CountDownLatch">
+                <i class="fa fa-chevron-left"></i> java多线程编程（二）：CountDownLatch
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="zproo" />
+          <p class="site-author-name" itemprop="name">zproo</p>
+          <p class="site-description motion-element" itemprop="description">研一、现居沈阳、就读于东北大学计算机专业、javascript、java、程序员。座右铭:今天不想跑，所以才去跑。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zproo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zproo" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Double类型计算丢失精度问题解决"><span class="nav-text">Double类型计算丢失精度问题解决</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java场景"><span class="nav-text">1. Java场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-问题重现"><span class="nav-text">1.1 问题重现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-解决思路"><span class="nav-text">1.2 解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-封装相关方法"><span class="nav-text">1.3 封装相关方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-测试"><span class="nav-text">1.4 测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-异常处理"><span class="nav-text">1.4.1 异常处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-数据库场景"><span class="nav-text">2. 数据库场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-问题重现"><span class="nav-text">2.1 问题重现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-解决思路"><span class="nav-text">2.2 解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-结果展示"><span class="nav-text">2.3 结果展示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Javascript场景"><span class="nav-text">3. Javascript场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-问题重现"><span class="nav-text">3.1 问题重现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-解决思路"><span class="nav-text">3.2 解决思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-结果展示"><span class="nav-text">3.3 结果展示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献："><span class="nav-text">参考文献：</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zproo</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/zproo/hexo-blog">
+    Next
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'https-zproo-github-io';
+      var disqus_identifier = '2017/计算丢失精度解决方法/';
+      var disqus_title = "计算丢失精度解决方法";
+      var disqus_url = 'http://zproo.github.io/2017/计算丢失精度解决方法/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("GHEN8u6QufHhkX6hJMzNpKeN-gzGzoHsz", "Gq4sJwz8T6cywiaHlBGFDbE4");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
