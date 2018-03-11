@@ -2,8 +2,162 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6bdf4c21-3b5a-4612-bbe9-08efb5a8285a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.deploy_git" afterPath="$PROJECT_DIR$/.deploy_git" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/_config.yml" afterPath="$PROJECT_DIR$/_config.yml" />
       <change beforePath="$PROJECT_DIR$/db.json" afterPath="$PROJECT_DIR$/db.json" />
+      <change beforePath="$PROJECT_DIR$/public/2017/HttpClient学习记录/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/Web开发中前后端的模板引擎/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/git bash修改主题配色/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/hello-world/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/java多线程编程（一）/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/java多线程编程（二）：CountDownLatch/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/jsp页面中获取session对象/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/ngrok外网映射/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/为Next主题添加canvas-ribbon/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/从0到有-如何搭建个人博客/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/动手实现redis数据锁/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/微信开发模式接入/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/计算丢失精度解决方法/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/2017/记一次数据库查询优化/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/about/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/04/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/05/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/06/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/10/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/11/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/12/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/page/2/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2017/page/3/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/page/2/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/archives/page/3/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/baidusitemap.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/google091459981c22016a.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/algolia_logo.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/avatar.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/avatar.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-by-nc-nd.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-by-nc-sa.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-by-nc.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-by-nd.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-by-sa.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-by.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/cc-zero.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/loading.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/placeholder.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/quote-l.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/quote-r.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/images/searchicon.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/affix.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/algolia-search.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/bootstrap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/hook-duoshuo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/motion.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/post-details.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/schemes/pisces.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/scrollspy.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/js/src/utils.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/algolia-instant-search/instantsearch.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/algolia-instant-search/instantsearch.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/canvas-nest/canvas-nest.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/canvas-ribbon/canvas-ribbon.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/blank.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/fancybox_loading.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/fancybox_loading@2x.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/fancybox_overlay.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/fancybox_sprite.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/fancybox_sprite@2x.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/helpers/fancybox_buttons.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/helpers/jquery.fancybox-buttons.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/helpers/jquery.fancybox-buttons.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/helpers/jquery.fancybox-media.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/jquery.fancybox.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/jquery.fancybox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fancybox/source/jquery.fancybox.pack.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fastclick/LICENSE" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fastclick/README.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fastclick/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fastclick/lib/fastclick.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/fastclick/lib/fastclick.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/HELP-US-OUT.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/css/font-awesome.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/css/font-awesome.css.map" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/css/font-awesome.min.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/fonts/FontAwesome.otf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/jquery/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/jquery_lazyload/CONTRIBUTING.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/jquery_lazyload/README.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/jquery_lazyload/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/jquery_lazyload/jquery.lazyload.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/jquery_lazyload/jquery.scrollstop.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/ua-parser-js/dist/ua-parser.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/ua-parser-js/dist/ua-parser.pack.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/velocity/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/velocity/velocity.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/velocity/velocity.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/velocity/velocity.ui.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/lib/velocity/velocity.ui.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/page/2/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/page/3/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/project/README.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/project/canvas-ribbon/canvas-ribbon.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/project/canvas-ribbon/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/project/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/project/stylesheets/style.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/B-树/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/BigDecimal/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Canvas/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/CountDownLatch/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Git-bash/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Git/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/GitHub/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Hexo/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/HttpClient/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Java/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Java/page/2/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/JavaScript/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Jedis/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Next/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Nodejs/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Scheme/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Servlet/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Shell/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/angualr/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/el表达式/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/jade/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/jsp/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/mvc/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/mysql/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/ngrok/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/redis/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/session/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/事务/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/外网映射/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/多线程/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/字段锁/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/微信开发/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/数据库索引/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/模板引擎/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/public/tags/浮点数计算精度/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/source/about/index.md" afterPath="$PROJECT_DIR$/source/about/index.md" />
+      <change beforePath="$PROJECT_DIR$/themes/nextd/_config.yml" afterPath="$PROJECT_DIR$/themes/nextd/_config.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,12 +167,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="188">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/nextd/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2178">
+              <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -29,6 +193,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>研一</find>
+      <find>toc</find>
+      <find>abo</find>
+      <find>现居</find>
     </findStrings>
     <dirStrings>
       <dir>D:\github\hexo-blog</dir>
@@ -46,6 +213,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/themes/nextd/_config.yml" />
       </list>
     </option>
   </component>
@@ -59,9 +227,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1057" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -78,8 +247,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -91,8 +261,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -209,42 +378,45 @@
       <option name="presentableId" value="Default" />
       <updated>1512608705001</updated>
       <workItem from="1512608706281" duration="571000" />
+      <workItem from="1520680744441" duration="285000" />
+      <workItem from="1520681344266" duration="628000" />
+      <workItem from="1520779946951" duration="1265000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="571000" />
+    <option name="totallyTimeSpent" value="2749000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1482602" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,8 +432,70 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/nextd/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9702">
+          <caret line="441" column="27" lean-forward="false" selection-start-line="441" selection-start-column="27" selection-end-line="441" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/nextd/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3762">
+          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/hexo-util/lib/spawn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="36" column="52" lean-forward="false" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/nextd/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2178">
+          <caret line="15" column="2" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding />
         </state>
       </provider>

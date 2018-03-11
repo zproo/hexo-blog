@@ -5,7 +5,7 @@
 # Site
 title: zproo*
 subtitle:
-description: 现居沈阳、就读于东北大学计算机专业、javascript、java、程序员。座右铭:今天不想跑，所以才去跑。
+description: 现居沈阳、就读于东北大学计算机专业、java、javascript、程序员。<br/><br/>座右铭:今天不想跑，所以才去跑。
 author: zproo
 #language: zh-Hans
 language: en
@@ -70,7 +70,8 @@ theme: nextd
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/zproo/zproo.github.io.git
+#  repo: https://github.com/zproo/zproo.github.io.git
+  repo: https://zproo:zhang94120@github.com/zproo/zproo.github.io.git
   branch: master
 
 #添加algolia站点搜索功能
